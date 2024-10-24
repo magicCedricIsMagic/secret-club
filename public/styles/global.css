@@ -1,6 +1,7 @@
 :root {
 	--base-col-primary: oklch(55% 55% 230);
-	--base-col-danger: oklch(from var(--col-interactive) l c 25);
+	--base-col-danger: oklch(from var(--col-interactive) 55% c 15);
+	--base-col-success: oklch(from var(--col-interactive) 55% c 170);
 	--base-col-interactive: oklch(from var(--col-primary) 50% 75% h);
 	--base-col-dark: oklch(from var(--col-primary) 35% 20% h);
 	--base-col-gray: color-mix(in srgb, var(--col-dark) 40%, white);
@@ -10,21 +11,31 @@
 	--col-primary: var(--base-col-primary);
 	--col-interactive: var(--base-col-interactive);
 	--col-danger: var(--base-col-danger);
+	--col-success: var(--base-col-success);
 	--col-dark: var(--base-col-dark);
 	--col-gray: var(--base-col-gray);
 	--col-light: var(--base-col-light);
 	--col-background: var(--base-col-background);
-
+	
 	&.dark-theme {
 		--col-primary: oklch(from var(--base-col-primary) 90% 15% h);
 		--col-interactive: oklch(from var(--base-col-interactive) 90% 55% h);
 		--col-danger: oklch(from var(--base-col-danger) 75% 65% h);
+		--col-success: oklch(from var(--base-col-success) 75% 65% h);
 		--col-dark: oklch(from var(--base-col-primary) 100% 5% h);
 		--col-gray: oklch(from var(--base-col-gray) 60% c h);
 		--col-light: oklch(from var(--base-col-dark) 25% 3.5% h);
 		--col-background: oklch(from var(--base-col-dark) 15% 3.5% h);
 	}
 
+	*:focus-visible {
+		outline-color: rgb(from var(--col-interactive) r g b / 15%);
+	}
+
+	--col-red: var(--col-danger);
+	--col-green: var(--col-success);
+	--col-white: white;
+	
 	--xxxs: 0.5rem;
 	--xxs: 0.75rem;
 	--xs: 1rem;
@@ -33,6 +44,7 @@
 	--lg: 5rem;
 	--xl: 7.5rem;
 	--xxl: 10rem;
+	--xxxl: 15rem;
 
 	--text-xxs: max(10rem, 10px);
 	--text-xs: max(1.2rem, 12px);
@@ -41,6 +53,20 @@
 	--text-lg: 2.4rem;
 	--text-xl: 3rem;
 	--text-xxl: 6rem;
+	--text-xxxl: 10rem;
+
+	--text-thin: 300;
+	--text-normal: 400;
+	--text-medium: 500;
+	--text-strong: 600;
+
+	--column-xxs: 10rem;
+	--column-xs: 20rem;
+	--column-sm: 30rem;
+	--column-md: 40rem;
+	--column-lg: 60rem;
+	--column-xl: 90rem;
+	--column-xxl: 120rem;
 
 	--interactive-border-radius: var(--xs);
 	--interactive-min-height: 4.4rem;
@@ -83,25 +109,48 @@ body {
 	font-size: var(--text-md);
 }
 
-h1 {
+.h1 {
 	font-size: var(--text-xxl);
-	color: var(--col-primary);
+	color: color-mix(in srgb, var(--col-primary) 40%, var(--col-dark));
 }
 
-h2 {
+.h2 {
 	font-size: var(--text-xl);
 }
 
-h3 {
+.h3 {
 	font-size: var(--text-lg);
 }
 
-h1, h2, h3, h4, h5, h6 {
+.h1, .h2, .h3, .h4, .h5, .h6 {
 	line-height: var(--line-height-sm);
 }
 
-h1, h2, h3, h4, h5, h6, p, ul {
+.h1, .h2, .h3, .h4, .h5, .h6, p, ul {
 	margin: unset;
+}
+
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+
+.text-truncate {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+}
+.text-truncate--2 {
+	-webkit-line-clamp: 2;
+}
+.text-truncate--3 {
+	-webkit-line-clamp: 3;
 }
 
 a {
@@ -178,4 +227,15 @@ a {
 }
 .align-end {
 	align-items: end;
+}
+
+.main {
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	&.full {
+		width: 100%;
+		max-width: 120rem;
+	}
 }

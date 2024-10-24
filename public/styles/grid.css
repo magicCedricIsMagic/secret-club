@@ -1,25 +1,29 @@
 .grid {
-	--col-min-width: var(--col-md);
+	--column-min-width: var(--column-md);
 	display: grid;
 	gap: var(--md);
-	grid-template-columns: repeat(auto-fill, minmax(var(--col-min-width), 1fr));	
+	grid-template-columns: repeat(auto-fill, minmax(var(--column-min-width), 1fr));	
 
 	&.xxs {
-		--col-min-width: var(--col-xxs);
+		--column-min-width: var(--column-xxs);
 	}
 	&.sm {
-		--col-min-width: var(--col-sm);
+		--column-min-width: var(--column-sm);
 	}
 	&.xs {
-		--col-min-width: var(--col-xs);
+		--column-min-width: var(--column-xs);
 	}
 	&.lg {
-		--col-min-width: var(--col-lg);
+		--column-min-width: var(--column-lg);
 	}
 	&.xl {
-		--col-min-width: var(--col-xl);
+		--column-min-width: var(--column-xl);
 	}
 	&.xxl {
-		--col-min-width: var(--col-xxl);
+		--column-min-width: var(--column-xxl);
+	}
+
+	@media (width < 600px) {
+		grid-template-columns: 1fr;
 	}
 }

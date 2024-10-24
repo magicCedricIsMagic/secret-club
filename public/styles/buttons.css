@@ -6,7 +6,7 @@
 
 .button {
 	--btn-col: var(--col-interactive);
-	--btn-col-hover: oklch(from var(--btn-col) calc(l * 0.75) calc(c * 1.25) h);
+	--btn-col-hover: oklch(from var(--btn-col) calc(l * 0.67) c h);
 	--text-col: var(--col-background);
 	
 	display: grid;
@@ -27,12 +27,21 @@
 	&:hover {
 		background-color: var(--btn-col-hover);
 		border-color: var(--btn-col-hover);
+		scale: 107.5%;
 	}
 	&:focus-visible {
 		outline-color: rgb(from var(--btn-col-hover) r g b / 30%);
 	}
 	&.danger {
 		--btn-col: var(--col-danger);
+	}
+	&.success {
+		--btn-col: var(--col-success);
+	}
+	&.gray {
+		--text-col: var(--col-dark);
+		--btn-col: color-mix(in srgb, var(--col-gray), transparent);
+		--btn-col-hover: oklch(from var(--btn-col) calc(l * 0.9) c h);
 	}
 	&.sm {
 		font-size: var(--text-sm);
@@ -41,5 +50,20 @@
 	}
 	@media (width < 800px) {
 		padding-inline: var(--sm);
+	}
+}
+
+.button--inline {
+	display: inline-flex;
+	padding: unset;
+	border: none;
+	color: var(--btn-col);
+	background-color: transparent;
+	min-height: unset;
+	&:focus-visible,
+	&:hover {
+		color: var(--btn-col-hover);
+		background-color: color-mix(in srgb, var(--btn-col) 20%, transparent);
+		scale: unset;
 	}
 }

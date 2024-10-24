@@ -17,6 +17,11 @@
 	padding-inline: var(--lg);
 	box-shadow: 0 var(--xxs) var(--xs) var(--shadow-color);
 	transition: var(--transition);
+
+	/* @starting-style {
+
+	} */
+
 	&:modal {
 		animation: modal-open var(--transition) forwards;
 	}

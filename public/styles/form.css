@@ -4,11 +4,12 @@ textarea {
 }
 
 .form {
+	flex: auto;
 	display: flex;
 	flex-direction: column;
 	gap: var(--md);
-	max-width: 60ch;
-	/* margin-inline: auto; */
+	width: 60ch;
+	max-width: calc(100vw - var(--lg) * 2);
 	background-color: var(--col-light);
 	padding: var(--lg);
 	border-radius: var(--md);
@@ -91,4 +92,35 @@ textarea {
 	}
 	translate: 0 0;
 	background-color: var(--col-gray);
+}
+
+.form-field__fieldset {
+	padding: var(--sm);
+	border-radius: var(--xs);
+	border: 1px solid color-mix(in srgb, var(--col-gray), transparent);
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--xs) var(--md);
+	flex-direction: row;
+
+	&.vertical {
+		flex-direction: column;
+	}
+
+	.form-field__label {
+		padding: 0 var(--xs);
+	}
+}
+
+.form-field__checkbox,
+.form-field__radio {
+	display: flex;
+	gap: var(--xxs);
+	input {
+		outline: 0 solid transparent;
+		transition: var(--transition);
+		&:focus-visible {
+			outline: 2px solid color-mix(in srgb, var(--col-interactive) 40%, transparent);
+		}
+	}
 }
