@@ -43,6 +43,6 @@ indexRouter.get("/*", (req, res, next) => {
 	)
 })
 
-indexRouter.use((err, req, res, next, { routes }) => indexController.getErrorView(err, req, res, next))
+indexRouter.use((err, req, res, next) => indexController.getErrorView(err, req, res, next, { routes }))
 
 module.exports = indexRouter

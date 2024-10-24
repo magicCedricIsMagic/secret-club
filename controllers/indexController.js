@@ -1,3 +1,6 @@
+// const CustomError = require("../utils/CustomError")
+// const db = require("../db/queries")
+
 const getView = (req, res, next, params) => {
 	res.render(params.route.file, {
 		title: params.route.title,
