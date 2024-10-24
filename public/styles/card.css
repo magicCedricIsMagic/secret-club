@@ -1,0 +1,18 @@
+.card {
+	background-color: var(--col-light);
+	padding: var(--lg);
+	border-radius: var(--md);
+	
+	&.sm {
+		padding: var(--md);
+		border-radius: var(--sm);
+	}
+	&.xs {
+		padding: var(--sm);
+		border-radius: var(--xs);
+	}
+
+	@media (width < 600px) {
+		padding-inline: var(--md);
+	}
+}

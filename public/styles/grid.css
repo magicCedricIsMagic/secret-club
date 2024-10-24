@@ -1,0 +1,25 @@
+.grid {
+	--col-min-width: var(--col-md);
+	display: grid;
+	gap: var(--md);
+	grid-template-columns: repeat(auto-fill, minmax(var(--col-min-width), 1fr));	
+
+	&.xxs {
+		--col-min-width: var(--col-xxs);
+	}
+	&.sm {
+		--col-min-width: var(--col-sm);
+	}
+	&.xs {
+		--col-min-width: var(--col-xs);
+	}
+	&.lg {
+		--col-min-width: var(--col-lg);
+	}
+	&.xl {
+		--col-min-width: var(--col-xl);
+	}
+	&.xxl {
+		--col-min-width: var(--col-xxl);
+	}
+}

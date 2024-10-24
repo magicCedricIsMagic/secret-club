@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<%- include("includes/headContent") %>
+	</head>
+
+	<body>
+		<%- include("includes/navbar") %>
+		<h1><%= title %></h1>
+		<div class="spacer vertical sm"></div>
+		<h2><%= error.name %>&nbsp;</h2>
+		<div class="spacer vertical sm"></div>
+		<p><%= error.message %></p>
+		<div class="spacer vertical"></div>
+		<div class="flex wrap gap-sm">
+			<% if (error.statusCode === 400) { %>
+				<button
+					onclick="history.back()"
+					class="button primary"
+				>
+					Retour vers le passé
+				</button>
+			<% } else { %>
+				<a href="/" class="button primary">Aller à la maison</a>
+			<% } %>
+		</div>
+	</body>
+	
+</html>

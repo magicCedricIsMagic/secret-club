@@ -1,0 +1,32 @@
+.spacer {
+	--size: var(--md);
+	
+	&.horizontal {
+		width: var(--size);
+	}
+	&.vertical {
+		height: var(--size);
+	}
+
+	&.xxs {
+		--size: var(--xxs);
+	}
+	&.xs {
+		--size: var(--xs);
+	}
+	&.sm {
+		--size: var(--sm);
+	}
+	&.md {
+		--size: var(--md);
+	}
+	&.lg {
+		--size: var(--lg);
+	}
+	&.xl {
+		--size: var(--xl);
+	}
+	&.xxl {
+		--size: var(--xxl);
+	}
+}

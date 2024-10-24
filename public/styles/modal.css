@@ -1,0 +1,75 @@
+:root.dark-theme .modal {
+	--shadow-color: color-mix(in srgb, black 15%, transparent);
+	background-color: var(--col-light);
+	&::backdrop {
+		background-color: color-mix(in srgb, black 25%, transparent);
+	}
+}
+.modal {
+	/* display: unset; */
+	/* animation: modal-close var(--transition-quick) forwards; */
+	--shadow-color: color-mix(in srgb, var(--col-dark) 15%, transparent);
+	color: var(--col-dark);
+	background-color: var(--col-background);
+	border: none;
+	border-radius: var(--md);
+	padding-block: var(--lg);
+	padding-inline: var(--lg);
+	box-shadow: 0 var(--xxs) var(--xs) var(--shadow-color);
+	transition: var(--transition);
+	&:modal {
+		animation: modal-open var(--transition) forwards;
+	}
+	&::backdrop {
+		background-color: color-mix(in srgb, var(--col-dark) 25%, transparent);
+		animation: backdrop-appear var(--transition-slow) forwards;
+	}
+	&.is-closing {
+		&:modal {
+			animation: modal-close var(--transition) forwards;
+		}
+		&::backdrop {
+			animation: backdrop-disappear var(--transition-slow) forwards;
+		}
+	}
+}
+@keyframes modal-close {
+	0% {
+		opacity: 1;
+		translate: none;
+	}
+	100% {
+		opacity: 0;
+		translate: 0 calc(var(--md) * -1);
+	}
+}
+@keyframes modal-open {
+	0% {
+		opacity: 0;
+		translate: 0 calc(var(--md) * -1);
+	}
+	100% {
+		opacity: 1;
+		translate: none;
+	}
+}
+@keyframes backdrop-appear {
+	0% {
+		opacity: 0;
+		backdrop-filter: blur(0);
+	}
+	100% {
+		opacity: 1;
+		backdrop-filter: blur(var(--xs));
+	}
+}
+@keyframes backdrop-disappear {
+	0% {
+		opacity: 1;
+		backdrop-filter: blur(var(--xs));
+	}
+	100% {
+		opacity: 0;
+		backdrop-filter: blur(0);
+	}
+}

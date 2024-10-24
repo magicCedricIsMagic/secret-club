@@ -1,0 +1,34 @@
+.navbar {
+	container: navbar / inline-size;
+	
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: var(--sm) var(--md);
+		padding: unset;
+	}
+	li {
+		display: block;
+		line-height: var(--line-height-sm);
+		@container navbar (width < 400px) {
+			width: min-content;
+		}
+	}
+	a {
+		font-weight: 600;
+		&:not([href]) {
+			color: var(--col-gray);
+		}
+		&[href] {
+			color: var(--col-interactive);
+			outline: 3px solid transparent;
+			border-radius: var(--xxs);
+			&:hover {
+				text-decoration: underline;
+			}
+			&:focus-visible {
+				outline-color: rgb(from var(--col-interactive) r g b / 20%);
+			}
+		}
+	}
+}

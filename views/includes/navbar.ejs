@@ -1,0 +1,16 @@
+<nav class="navbar">
+  <ul>
+    <% for (const link of links) { %>
+    <li>
+      <a 
+				<% if (link.title !== title) { %>
+					href="<%= link.url %>" 
+				<% } %>
+			>
+				<%= link?.linkTitle || link.title %>
+			</a>
+    </li>
+    <% } %>
+  </ul>
+</nav>
+<div class="spacer vertical lg"></div>

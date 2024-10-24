@@ -1,0 +1,94 @@
+textarea {
+	resize: vertical;
+	min-height: 4.203rem;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--md);
+	max-width: 60ch;
+	/* margin-inline: auto; */
+	background-color: var(--col-light);
+	padding: var(--lg);
+	border-radius: var(--md);
+
+	.button {
+		margin-block-start: var(--xs);
+	}
+	
+	@media (width < 500px) {
+		padding-inline: var(--md);
+	}
+}
+
+.form-field {
+	display: flex;
+	flex-direction: column;
+	gap: var(--xs);
+}
+
+.form-field__label {
+	line-height: var(--line-height-sm);
+	&:has(~ .form-field__input[required]):after {
+		content: "*";
+		color: var(--col-danger);
+		margin-inline-start: var(--xxxs);
+	}
+}
+
+.form-field__input {
+	padding: var(--xxs) var(--sm);
+	border-radius: var(--interactive-border-radius);
+	min-height: var(--interactive-min-height);
+	border: 1px solid rgb(from var(--col-dark) r g b / 20%);
+	outline: 3px solid transparent;
+	transition: var(--transition);
+	line-height: var(--line-height);
+	&:focus-visible {
+		outline-color: rgb(from var(--col-interactive) r g b / 20%);
+	}
+	&[type="range"] {
+		cursor: grab;
+		padding-inline: 0;
+		margin-block-end: calc(var(--xxs) * -1);
+		transition: none;
+		min-height: 0;
+		&:active {
+			cursor: grabbing;
+		}
+	}
+}
+.form-field__switch {
+	cursor: pointer;
+	border: unset;
+	outline: 3px solid transparent;
+	outline-offset: 3px;
+	&:focus-visible {
+		outline-color: rgb(from var(--col-interactive) r g b / 20%);
+	}
+	margin-block-start: var(--xxs);
+	width: var(--lg);
+	padding: var(--xxxs);
+	border-radius: 999rem;
+	border-radius: 999rem;
+	background-color: var(--col-interactive);
+	/* transition: var(--transition); */
+	&:before {
+		content: "";
+		display: block;
+		width: var(--sm);
+		height: var(--sm);
+		translate: 100% 0;
+		border-radius: 999rem;
+		background-color: var(--col-light);
+		transition: translate var(--transition);
+	}
+}
+.form-field__input--switch:not(:checked) ~ .form-field__switch {
+	&:before {
+		translate: none;
+	}
+	translate: 0 0;
+	background-color: var(--col-gray);
+}

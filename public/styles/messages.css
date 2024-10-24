@@ -1,0 +1,79 @@
+.messages {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+	gap: var(--md);
+
+	@media (width < 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.message {
+	padding: var(--md) var(--lg);
+	background-color: var(--col-light);
+	border-radius: var(--sm);
+	
+	.user,
+	.date {
+		opacity: 0.75;
+		color: color-mix(in srgb, var(--col-dark), var(--col-primary));
+		font-size: var(--text-sm);
+	}
+	
+	.date {
+		margin-block-end: var(--sm);
+	}
+
+	.text {
+		font-size: var(--text-lg);
+	}
+	
+	&.big {
+		padding: var(--lg) var(--xl);
+		border-radius: var(--md);
+		max-width: 50rem;
+		.user,
+		.date {
+			font-size: var(--text-md);
+		}
+		.date {
+			margin-block-end: var(--md);
+		}
+		.text {
+			font-size: var(--text-xl);
+		}
+
+		@media (width < 600px) {
+			padding-inline: var(--lg);
+		}
+		@media (width < 400px) {
+			padding-inline: var(--md);
+		}
+	}
+	
+	&:is(a[href]) {
+		cursor: pointer;
+		transition: var(--transition);
+		outline: 4px solid transparent;
+
+		&:focus-visible {
+			outline-color: rgb(from color-mix(in srgb, var(--col-light) 90%, var(--col-interactive)) r g b / 7.5%);
+		}
+
+		&:hover,
+		&:focus-visible {
+			color: color-mix(in srgb, var(--col-dark) 40%, var(--col-interactive));	
+			background-color: color-mix(in srgb, var(--col-light) 92.5%, var(--col-interactive));
+			transition: var(--transition-quick);
+
+			.user,
+			.date {
+				color: color-mix(in srgb, var(--col-dark) 40%, var(--col-interactive));
+			}
+		}
+	}
+
+	@media (width < 600px) {
+		padding-inline: var(--md);
+	}
+}

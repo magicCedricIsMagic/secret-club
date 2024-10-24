@@ -1,0 +1,25 @@
+<% const message = "Est-ce que tu vas bien\u00a0?" %>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<%- include("includes/headContent") %>
+		<link rel="stylesheet" href="/styles/index.css">
+	</head>
+
+	<body>
+		<%- include("includes/navbar") %>
+		<div class="flex align-center gap-lg ">
+			<img class="profileTitleImage" src="./images/bear.jpg" alt="Ours">
+			<div>
+				<h1><%= title %></h1>
+				<div class="spacer vertical xs"></div>
+				<h2><%= message %></h2>
+			</div>
+		</div>
+		<div class="spacer vertical"></div>
+		<p>Ça cailloute&nbsp;!</p>
+	</body>
+
+</html>

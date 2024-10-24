@@ -1,0 +1,45 @@
+:root.dark-theme {
+	.button {
+		--btn-col-hover: oklch(from var(--btn-col) calc(l * 0.8) c h);
+	}
+}
+
+.button {
+	--btn-col: var(--col-interactive);
+	--btn-col-hover: oklch(from var(--btn-col) calc(l * 0.75) calc(c * 1.25) h);
+	--text-col: var(--col-background);
+	
+	display: grid;
+	place-items: center;
+	line-height: var(--line-height-sm);
+	width: fit-content;
+	min-height: var(--interactive-min-height);
+
+	color: var(--text-col);
+	background-color: var(--btn-col);
+	padding: var(--xs) var(--md);
+	border-radius: var(--interactive-border-radius);
+	border: 1px solid var(--btn-col);
+	cursor: pointer;
+	outline: 3px solid transparent;
+	transition: var(--transition);
+	&:focus-visible,
+	&:hover {
+		background-color: var(--btn-col-hover);
+		border-color: var(--btn-col-hover);
+	}
+	&:focus-visible {
+		outline-color: rgb(from var(--btn-col-hover) r g b / 30%);
+	}
+	&.danger {
+		--btn-col: var(--col-danger);
+	}
+	&.sm {
+		font-size: var(--text-sm);
+		min-height: 0;
+		padding: var(--xxs) var(--sm);
+	}
+	@media (width < 800px) {
+		padding-inline: var(--sm);
+	}
+}
