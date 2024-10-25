@@ -1,4 +1,4 @@
-const pool = require("./pool")
+const pool = require("../pool")
 
 async function getAllMessages() {
   try {
@@ -43,9 +43,9 @@ async function getLastMessage() {
 async function addMessage(message) {
   try {
     await pool.query(`
-      INSERT INTO messagess (author, text)
+      INSERT INTO messages (text, user_id)
       VALUES ($1, $2)
-    `, [message.author, message.text])
+    `, [message.text, message.user_id])
 
     const newMessage = await getLastMessage(message.id)
     return newMessage
@@ -59,10 +59,10 @@ async function updateMessage(message) {
   try {
     await pool.query(`
       UPDATE messages
-      SET author = $2 
-        , text = $3
+      SET text = $2 
+        , user_id = $3
       WHERE id = $1
-    `, [message.id, message.author, message.text])
+    `, [message.id, message.text, message.user_id])
 
     const newMessage = await getMessage(message.id)
     return newMessage

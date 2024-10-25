@@ -6,7 +6,6 @@
 	--base-col-dark: oklch(from var(--col-primary) 35% 20% h);
 	--base-col-gray: color-mix(in srgb, var(--col-dark) 40%, white);
 	--base-col-light: color-mix(in srgb, var(--col-dark) 8%, white);
-	--base-col-background: white;
 	
 	--col-primary: var(--base-col-primary);
 	--col-interactive: var(--base-col-interactive);
@@ -15,7 +14,8 @@
 	--col-dark: var(--base-col-dark);
 	--col-gray: var(--base-col-gray);
 	--col-light: var(--base-col-light);
-	--col-background: var(--base-col-background);
+	--col-foreground: var(--base-col-light);
+	--col-background: white;
 	
 	&.dark-theme {
 		--col-primary: oklch(from var(--base-col-primary) 90% 15% h);
@@ -25,6 +25,7 @@
 		--col-dark: oklch(from var(--base-col-primary) 100% 5% h);
 		--col-gray: oklch(from var(--base-col-gray) 60% c h);
 		--col-light: oklch(from var(--base-col-dark) 25% 3.5% h);
+		--col-foreground: var(--col-light);
 		--col-background: oklch(from var(--base-col-dark) 15% 3.5% h);
 	}
 
@@ -58,7 +59,7 @@
 	--text-thin: 300;
 	--text-normal: 400;
 	--text-medium: 500;
-	--text-strong: 600;
+	--text-bold: 600;
 
 	--column-xxs: 10rem;
 	--column-xs: 20rem;

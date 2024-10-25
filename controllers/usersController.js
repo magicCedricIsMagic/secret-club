@@ -1,18 +1,16 @@
 // const CustomError = require("../utils/CustomError")
-// const db = require("../db/queries")
+// const dbUsers = require("../db/queries/usersQueries")
 
-const getView = (req, res, next, params) => {
+function getView (req, res, next, params) {
 	res.render(params.route.file, {
 		title: params.route.title,
-		links: params.routes,
 	})
 }
 
-const getErrorView = (err, req, res, next, params) => {
+function getErrorView (err, req, res, next, params) {
 	res.render("error", {
 		title: `Erreur ${err.statusCode}`,
 		error: err,
-		links: params.routes,
 	})
 }
 

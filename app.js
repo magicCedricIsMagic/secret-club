@@ -16,9 +16,15 @@ const { displayDate, displayHour } = require("./utils/dates")
 app.locals.displayDate = displayDate
 app.locals.displayHour = displayHour
 
-const indexRouter = require("./routes/indexRouter")
+const adminRouter = require("./routes/adminRouter")
+const accountRouter = require("./routes/accountRouter")
+const messagesRouter = require("./routes/messagesRouter")
+const rootRouter = require("./routes/rootRouter")
 
-app.use("/", indexRouter)
+app.use("/admin", adminRouter)
+app.use("/my-account", accountRouter)
+app.use("/messages", messagesRouter)
+app.use("/", rootRouter)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => console.log(`Écoutons sur le port ${PORT} !`))
