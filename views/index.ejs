@@ -29,7 +29,7 @@
 							</div>
 						</div>
 						<div class="message__bubble">
-							<div class="message__date"><%= message.date %></div>
+							<div class="message__date">Envoyé le <%= locals.displayDate(message.date)%> à <%= locals.displayHour(message.date) %></div>
 							<div class="message__text"><%= message.text %></div>
 						</div>
 					</article>
