@@ -1,0 +1,31 @@
+<nav class="site-nav">
+	<header class="site-nav__header">
+		<figure class="site-nav__picture-container">
+			<% if (locals.currentUser && currentUser.photo_url) { %>
+				<img
+					class="site-nav__picture site-nav__picture--image"
+					src="<%= currentUser.photo_url %>"
+					alt="<%= currentUser.surname %> <%= currentUser.name %>"
+				/>
+			<% } else { %>
+				<i class="site-nav__picture site-nav__picture--icon fas fa-user"></i>
+			<% } %>
+		</figure>
+		<h2 class="h3 site-nav__username"><%= locals?.currentUser ? currentUser.surname : "Guest" %></h2>
+	</header>
+
+	<% if (locals.routes) { %>
+		<section class="site-nav__links">
+			<% for (const link of routes) { %>
+				<a 
+					class="site-nav__link"
+					<% if (link.title !== title) { %>
+						href="<%= link.url %>" 
+					<% } %>
+				>
+					<%= link.linkTitle || link.title %>
+				</a>
+			<% } %>
+		</section>
+	<% } %>
+</nav>

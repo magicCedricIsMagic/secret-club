@@ -46,19 +46,17 @@ async function addUser(user) {
       INSERT INTO users (
         name
         , surname
-        , status_id
         , photo_url
         , color
+        , membership_status_id
       )
       VALUES ($1, $2, $3, $4, $5)
     `, [
-      user.mail,
-      user.password,
       user.name,
       user.surname,
-      user.status_id,
       user.photo_url,
       user.color,
+      user.membership_status_id,
     ])
 
     const newUser = await getLastUser(user.id)
@@ -75,19 +73,17 @@ async function updateUser(user) {
       UPDATE users
       SET name = $2
         , surname = $3
-        , status_id = $4
         , photo_url = $5
         , color = $6
+        , membership_status_id = $4
       WHERE id = $1
     `, [
       user.id,
-      user.mail,
-      user.password,
       user.name,
       user.surname,
-      user.status_id,
       user.photo_url,
       user.color,
+      user.membership_status_id,
     ])
 
     const newUser = await getUser(user.id)

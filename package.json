@@ -1,12 +1,13 @@
 {
-  "name": "odin-posgresql",
+  "name": "secret-club",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
     "dev": "node --watch app.js",
-    "populateDb": "node db/populateDb.js"
+    "populateDb": "node db/populateDb.js",
+    "reinitDb": "node db/reinitDb.js"
   },
   "keywords": [],
   "author": "",

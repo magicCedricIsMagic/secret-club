@@ -40,7 +40,7 @@
 .message__bubble {
 	padding: var(--md) var(--lg);
 	position: relative;
-	color: var(--col-background);
+	color: var(--col-white);
 	background-color: var(--msg-col);
 	border-radius: var(--md);
 	border-top-left-radius: 0;

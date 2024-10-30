@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html
+	lang="fr"
+	class="<%= locals.currentUser && "dark-theme" %>"
+>
 
 	<head>
 		<%- include("includes/headContent") %>
 	</head>
 
 	<body>
-		<%- include("includes/navbar") %>
-		<h1><%= title %></h1>
-		<div class="spacer vertical sm"></div>
-		<h2><%= error.name %>&nbsp;</h2>
-		<div class="spacer vertical sm"></div>
-		<p><%= error.message %></p>
-		<div class="spacer vertical"></div>
-		<div class="flex wrap gap-sm">
-			<% if (error.statusCode === 400) { %>
-				<button
-					onclick="history.back()"
-					class="button primary"
-				>
-					Retour vers le passé
-				</button>
-			<% } else { %>
-				<a href="/" class="button primary">Aller à la maison</a>
-			<% } %>
-		</div>
+		<%- include("includes/header") %>
+		<main class="main">
+			<h1 class="h1"><%= title %></h1>
+			<div class="spacer vertical sm"></div>
+			<h2 class="h2"><%= error.name %>&nbsp;</h2>
+			<div class="spacer vertical sm"></div>
+			<p><%= error.message %></p>
+			<div class="spacer vertical lg"></div>
+			<div class="flex wrap gap-sm">
+				<% if (error.statusCode === 400) { %>
+					<button
+						onclick="history.back()"
+						class="button primary"
+					>
+						Retour
+					</button>
+				<% } else { %>
+					<a href="/" class="button primary">Retour à la page d'accueil</a>
+				<% } %>
+			</div>
+		</main>
 	</body>
 	
 </html>

@@ -1,7 +1,7 @@
 :root {
-	--base-col-primary: oklch(55% 55% 230);
-	--base-col-danger: oklch(from var(--col-interactive) 55% c 15);
-	--base-col-success: oklch(from var(--col-interactive) 55% c 170);
+	--base-col-primary: oklch(55% 55% 15deg);
+	--base-col-danger: oklch(from var(--col-interactive) 55% c 30deg);
+	--base-col-success: oklch(from var(--col-interactive) 55% c 170deg);
 	--base-col-interactive: oklch(from var(--col-primary) 50% 75% h);
 	--base-col-dark: oklch(from var(--col-primary) 35% 20% h);
 	--base-col-gray: color-mix(in srgb, var(--col-dark) 40%, white);
@@ -59,7 +59,7 @@
 	--text-thin: 300;
 	--text-normal: 400;
 	--text-medium: 500;
-	--text-bold: 600;
+	--text-bold: 800;
 
 	--column-xxs: 10rem;
 	--column-xs: 20rem;
@@ -123,12 +123,16 @@ body {
 	font-size: var(--text-lg);
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6 {
-	line-height: var(--line-height-sm);
+.h1, .h2 {
+	font-weight: var(--text-bold);
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6, p, ul {
-	margin: unset;
+.h3, .h4 {
+	font-weight: var(--text-medium);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+	line-height: var(--line-height-sm);
 }
 
 .text-center {

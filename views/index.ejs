@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html
+	lang="fr"
+	class="<%= locals.currentUser && "dark-theme" %>"
+>
 
 	<head>
 		<%- include("includes/headContent") %>
@@ -7,12 +10,11 @@
 	</head>
 
 	<body>
-		<%- include("includes/navbar") %>
+		<%- include("includes/header") %>
 		<main class="main">
 			<h1 class="h1"><%= title %></h1>
 			<div class="spacer vertical xl"></div>
 			<section class="messages">
-				<% console.log("messages", messages) %>
 				<% for (const message of messages) { %>
 					<article
 						class="message"

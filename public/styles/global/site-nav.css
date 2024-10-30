@@ -1,0 +1,70 @@
+.site-logo {
+	display: inline-block;
+	&[href] {
+		transition: var(--transition);
+		&:hover {
+			scale: 1.075;
+		}
+	}
+}
+
+.site-nav {
+	position: fixed;
+	top: var(--lg);
+	right: var(--lg);
+	display: flex;
+	gap: var(--md);
+	flex-direction: column;
+	color: var(--col-background);
+	background-color: var(--col-primary);
+	padding: var(--lg) var(--md);
+	border-radius: var(--md);
+	min-width: 20rem;
+}
+
+.site-nav__header {
+	display: flex;
+	gap: var(--xs);
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+}
+
+.site-nav__picture-container {
+	background-color: color-mix(in srgb, var(--col-background) 25%, transparent);
+	border-radius: 999rem;
+	width: var(--xl);
+	height: var(--xl);
+	display: grid;
+	place-content: center;
+}
+
+.site-nav__picture--icon {
+	font-size: var(--text-lg);
+	color: var(--col-background);
+	opacity: 0.5;
+}
+
+/* .site-nav__username {} */
+
+.site-nav__links {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	gap: var(--sm);
+}
+
+.site-nav__link {
+	&[href] {
+		transition: var(--transition);
+		&:hover,
+		&:focus-visible {
+			scale: 1.1;
+			text-decoration: underline;
+		}
+	}
+	&:not([href]) {
+		opacity: 33%;
+	}
+}

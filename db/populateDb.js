@@ -55,7 +55,7 @@ const SQL = `
   VALUES (
     'Gallon'
     , 'Cédric'
-    , 'https://www.magic-cedric.fr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbonjour-2.b72b5234.png&w=828&q=75'
+    , 'https://transforms.stlzoo.org/production/animals/grizzly-bear-01-01.jpg?w=1200&h=1200&auto=compress%2Cformat&fit=crop&dm=1658944720&s=2872e362d84d62c84bdda87d94876b64'
     , '#344cb7'
     , '1'
   );
@@ -81,37 +81,6 @@ const SQL = `
   );
 
 `
-
-/*
-INSERT INTO users (
-  mail
-  , password
-  , name
-  , surname
-  , photo_url
-  , color
-  , membership_status_id
-) 
-VALUES (
-  'cedrictravailletresdur@gmail.com'
-  , 'toto'
-  , 'Cédric'
-  , 'Gallon'
-  , 'https://www.magic-cedric.fr/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbonjour-2.b72b5234.png&w=828&q=75'
-  , '#344cb7'
-  , '1'
-);
-
-INSERT INTO messages (
-  text
-  , user_id
-) 
-VALUES (
-  'Bonjour.'
-  , '1'
-);
-*/
-
 
 async function main() {
   console.log("seeding…")
