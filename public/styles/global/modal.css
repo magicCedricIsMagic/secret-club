@@ -2,7 +2,7 @@
 	--shadow-color: color-mix(in srgb, black 15%, transparent);
 	background-color: var(--col-light);
 	&::backdrop {
-		background-color: color-mix(in srgb, black 25%, transparent);
+		background-color: color-mix(in srgb, black 90%, transparent);
 	}
 }
 .modal {
@@ -16,14 +16,14 @@
 	padding-block: var(--lg);
 	padding-inline: var(--lg);
 	box-shadow: 0 var(--xxs) var(--xs) var(--shadow-color);
-	transition: var(--transition);
+	transition: var(--transition-slow);
 
 	/* @starting-style {
 
 	} */
 
 	&:modal {
-		animation: modal-open var(--transition) forwards;
+		animation: modal-open var(--transition-slow) forwards;
 	}
 	&::backdrop {
 		background-color: color-mix(in srgb, var(--col-dark) 25%, transparent);
@@ -31,7 +31,7 @@
 	}
 	&.is-closing {
 		&:modal {
-			animation: modal-close var(--transition) forwards;
+			animation: modal-close var(--transition-slow) forwards;
 		}
 		&::backdrop {
 			animation: backdrop-disappear var(--transition-slow) forwards;
@@ -65,13 +65,13 @@
 	}
 	100% {
 		opacity: 1;
-		backdrop-filter: blur(var(--xs));
+		backdrop-filter: blur(var(--sm));
 	}
 }
 @keyframes backdrop-disappear {
 	0% {
 		opacity: 1;
-		backdrop-filter: blur(var(--xs));
+		backdrop-filter: blur(var(--sm));
 	}
 	100% {
 		opacity: 0;

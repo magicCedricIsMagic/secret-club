@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html
+	lang="fr"
+	class="<%= locals.user && "dark-theme" %>"
+>
+
+	<head>
+		<%- include("includes/headContent") %>
+	</head>
+
+	<body>
+		<%- include("includes/header") %>
+		<main class="main">
+			<h1 class="h1"><%= title %></h1>
+			<div class="spacer vertical lg"></div>
+			
+			<h1 class="h2">Modifier mon compte</h1>
+			<div class="spacer vertical sm"></div>
+			<form class="form" action="/my-account/update" method="POST">
+
+				<label class="form-field">
+					<span class="form-field__label">Prénom</span>
+					<input class="form-field__input" name="surname" required type="text" value="<%= user.surname %>" />
+				</label>
+
+				<label class="form-field">
+					<span class="form-field__label">Nom</span>
+					<input class="form-field__input" name="name" required type="text" value="<%= user.name %>" />
+				</label>
+
+				<label class="form-field">
+					<span class="form-field__label">E-mail</span>
+					<input class="form-field__input" name="mail" required type="email" value="<%= user.mail %>" />
+				</label>
+
+				<label class="form-field">
+					<span class="form-field__label">Photo de profil</span>
+					<input
+						class="form-field__input"
+						name="photo"
+						type="url"
+						pattern="https://.*"
+						placeholder="https://example.com"
+						value="<%= user.photo_url %>"
+					/>
+				</label>
+				
+				<button class="button" type="submit">Modifier</button>
+			</form>
+			<div class="spacer vertical md"></div>
+			<button class="button sm danger" onclick="openDeleteAccountModal()">Supprimer mon compte</button>
+
+			<dialog id="delete-account-modal" class="modal">
+				<h3 class="h3">Êtes-vous sûr de vouloir supprimer votre compte&nbsp;?</h3>
+				<div class="spacer vertical md"></div>
+				<p>La suppression sera définitive.</p>
+				<div class="spacer vertical lg"></div>
+				<div class="flex gap-sm justify-end align-center">
+					<button class="button gray" onclick="closeDeleteAccountModal()">Annnuler</button>
+					<form action="/my-account/delete" method="POST">
+						<button type="submit" class="button danger" onclick="closeDeleteAccountModal()">Supprimer</button>
+					</form>
+				</div>
+			</dialog>
+
+		</main>
+
+		<script>
+			function openDeleteAccountModal() {
+				const deleteAccountModal = document.querySelector(`#delete-account-modal`)
+				deleteAccountModal.showModal()
+			}
+			function closeDeleteAccountModal() {
+				const deleteAccountModal = document.querySelector(`#delete-account-modal`)
+				deleteAccountModal.classList.add("is-closing")
+				setTimeout(() => {
+					deleteAccountModal.classList.remove("is-closing")
+					deleteAccountModal.close()
+				}, 500)
+			}
+		</script>
+
+	</body>
+
+</html>

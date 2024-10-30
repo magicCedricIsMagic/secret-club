@@ -4,11 +4,7 @@ const CustomError = require("../utils/CustomError")
 
 const adminRouter = Router()
 
-const usersController = require("../controllers/usersController.js")
-
-/* adminRouter.get("/:id", (req, res, next) => {
-	usersController.getMyAccountView(req, res, next)
-}) */
+const globalController = require("../controllers/globalController.js")
 
 adminRouter.get("/*", (req, res, next) => {
 	throw new CustomError(
@@ -17,6 +13,6 @@ adminRouter.get("/*", (req, res, next) => {
 	)
 })
 
-adminRouter.use((err, req, res, next) => usersController.getErrorView(err, req, res, next))
+adminRouter.use((err, req, res, next) => globalController.getErrorView(err, req, res, next))
 
 module.exports = adminRouter

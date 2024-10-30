@@ -2,11 +2,8 @@
 const { Router } = require("express")
 const CustomError = require("../utils/CustomError")
 const messagesRouter = Router()
-const messagesController = require("../controllers/messagesController.js")
-
-/* messagesRouter.get("/add", (req, res, next) => {
-	messagesController.getAddMessageView(req, res, next)
-}) */
+// const messagesController = require("../controllers/messagesController.js")
+const globalController = require("../controllers/globalController.js")
 
 messagesRouter.get("/*", (req, res, next) => {
 	throw new CustomError(
@@ -15,6 +12,6 @@ messagesRouter.get("/*", (req, res, next) => {
 	)
 })
 
-messagesRouter.use((err, req, res, next) => messagesController.getErrorView(err, req, res, next))
+messagesRouter.use((err, req, res, next) => globalController.getErrorView(err, req, res, next))
 
 module.exports = messagesRouter

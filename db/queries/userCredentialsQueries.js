@@ -26,6 +26,19 @@ async function getUserCredential(id) {
   }
 }
 
+async function getUserCredentialByUserId(userId) {
+  try {
+    const { rows } = await pool.query(`
+      SELECT * FROM user_credentials
+      WHERE user_credentials.user_id = $1
+    `, [userId])
+    return rows[0]
+  }
+  catch (error) {
+    console.error("error", error)
+  }
+}
+
 async function getUserCredentialByMail(mail) {
   try {
     const { rows } = await pool.query(`
@@ -124,6 +137,7 @@ async function deleteAllUserCredentials() {
 module.exports = {
   getAllUserCredentials,
   getUserCredential,
+  getUserCredentialByUserId,
   getUserCredentialByMail,
   getLastUserCredential,
   addUserCredential,

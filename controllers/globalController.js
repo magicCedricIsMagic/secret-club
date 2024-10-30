@@ -1,19 +1,18 @@
 // const CustomError = require("../utils/CustomError")
 // const dbUsers = require("../db/queries/usersQueries")
 
-function getView (req, res, next, params) {
-	res.render(params.route.file, {
-		title: params.route.title,
-		route: params.route,
-		routes: params.routes,
+function getView (req, res, next) {
+	const route = res.locals.routes.find(route => route.url === req.originalUrl)
+	res.render(route.file, {
+		title: route.title,
+		route,
 	})
 }
 
-function getErrorView (err, req, res, next, params) {
+function getErrorView (err, req, res, next) {
 	res.render("error", {
 		title: `Erreur ${err.statusCode}`,
 		error: err,
-		routes: params.routes,
 	})
 }
 

@@ -25,6 +25,7 @@ app.locals.displayHour = displayHour
 
 const { getUser } = require('./db/queries/usersQueries')
 const { getUserCredentialByMail, getUserCredential } = require('./db/queries/userCredentialsQueries')
+const { getMembershipStatus } = require('./db/queries/membershipStatusesQueries')
 
 passport.use(
   new LocalStrategy(async (username, password, callback) => {
@@ -62,12 +63,55 @@ passport.deserializeUser(async (id, callback) => {
 })
 
 app.use(async (req, res, next) => {
-  res.locals.currentUser = undefined
+  res.locals.user = undefined
   if (req.user?.user_id) {
     const user = await getUser(req.user.user_id)
-    res.locals.currentUser = user
+		const membershipStatus = await getMembershipStatus(user.membership_status_id)
+    res.locals.user = {
+			...user,
+			mail: req.user.mail,
+			membershipStatus,
+		}
   }
   next()
+})
+
+const allRoutes = [
+	{
+		url: "/",
+		file: "index",
+		title: "Tous les messages",
+		linkTitle: "Accueil",
+	},
+	{
+		url: "/log-in",
+		file: "log-in-form",
+		title: "Connexion",
+	},
+	{
+		url: "/sign-up",
+		file: "sign-up-form",
+		title: "Inscription",
+	},
+	{
+		url: "/my-account",
+		file: "my-account",
+		title: "Mon compte",
+	},
+	{
+		url: "/log-out",
+		title: "Déconnexion",
+	},
+]
+
+app.use((req, res, next) => {
+	if (res.locals?.user) {
+		res.locals.routes = allRoutes.filter((route) => !["/log-in", "/sign-up"].includes(route.url))
+	}
+	else {
+		res.locals.routes = allRoutes.filter((route) => !["/log-out", "/my-account"].includes(route.url))
+	}
+	next()
 })
 
 const adminRouter = require("./routes/adminRouter")
