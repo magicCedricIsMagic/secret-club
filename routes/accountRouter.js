@@ -4,7 +4,7 @@ const { Router } = require("express")
 const CustomError = require("../utils/CustomError")
 const accountRouter = Router()
 const globalController = require("../controllers/globalController.js")
-// const usersController = require("../controllers/usersController.js")
+const usersController = require("../controllers/usersController.js")
 
 accountRouter.use((req, res, next) => {
 	if (!res.locals.user) {
@@ -14,6 +14,10 @@ accountRouter.use((req, res, next) => {
 })
 
 accountRouter.get("/", globalController.getView)
+
+accountRouter.post("/update", usersController.modifyUser)
+
+accountRouter.post("/delete", usersController.removeUser)
 
 accountRouter.get("/*", (req, res, next) => {
 	throw new CustomError(

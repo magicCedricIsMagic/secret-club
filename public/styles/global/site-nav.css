@@ -19,7 +19,7 @@
 	background-color: var(--col-primary);
 	padding: var(--lg) var(--md);
 	border-radius: var(--md);
-	min-width: 20rem;
+	width: 25rem;
 }
 
 .site-nav__header {
@@ -33,14 +33,22 @@
 .site-nav__picture-container {
 	background-color: color-mix(in srgb, var(--col-background) 25%, transparent);
 	border-radius: 999rem;
-	width: var(--xl);
-	height: var(--xl);
-	display: grid;
-	place-content: center;
+	width: var(--xxl);
+	height: var(--xxl);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.site-nav__picture--image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
 }
 
 .site-nav__picture--icon {
-	font-size: var(--text-lg);
+	font-size: var(--text-xl);
 	color: var(--col-background);
 	opacity: 0.5;
 }

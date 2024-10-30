@@ -73,9 +73,9 @@ async function updateUser(user) {
       UPDATE users
       SET name = $2
         , surname = $3
-        , photo_url = $5
-        , color = $6
-        , membership_status_id = $4
+        , photo_url = $4
+        , color = $5
+        , membership_status_id = $6
       WHERE id = $1
     `, [
       user.id,

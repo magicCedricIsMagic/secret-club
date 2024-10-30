@@ -109,6 +109,42 @@ async function updateUserCredential(user) {
     console.error("error", error)
   }
 }
+async function updateUserMail(user) {
+  try {
+    await pool.query(`
+      UPDATE user_credentials
+      SET mail = $2
+      WHERE id = $1
+    `, [
+      user.id,
+      user.mail,
+    ])
+
+    const newUserCredential = await getUserCredential(user.id)
+    return newUserCredential
+  }
+  catch (error) {
+    console.error("error", error)
+  }
+}
+async function updateUserPassword(user) {
+  try {
+    await pool.query(`
+      UPDATE user_credentials
+      SET password = $2
+      WHERE id = $1
+    `, [
+      user.id,
+      user.password,
+    ])
+
+    const newUserCredential = await getUserCredential(user.id)
+    return newUserCredential
+  }
+  catch (error) {
+    console.error("error", error)
+  }
+}
 
 async function deleteUserCredential(id) {
   try {
@@ -142,6 +178,8 @@ module.exports = {
   getLastUserCredential,
   addUserCredential,
   updateUserCredential,
+  updateUserMail,
+  updateUserPassword,
   deleteUserCredential,
   deleteAllUserCredentials,
 }
