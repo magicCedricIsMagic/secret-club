@@ -7,7 +7,7 @@
     "start": "node app.js",
     "dev": "node --watch app.js",
     "populateDb": "node db/populateDb.js",
-    "reinitDb": "node db/reinitDb.js"
+    "emptyDb": "node db/emptyDb.js"
   },
   "keywords": [],
   "author": "",

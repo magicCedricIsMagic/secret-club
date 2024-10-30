@@ -66,8 +66,8 @@ const SQL = `
     , user_id
   ) 
   VALUES (
-    'cedrictravailletresdur@gmail.com'
-    , 'toto'
+    'cedric.gallon@mail.fr'
+    , '$2a$10$86y4F6t49QIH0nU4/E9uBehdYNNTb.ldqp.mLMO0m9Q8fQSJ3107i'
     , '1'
   );
 

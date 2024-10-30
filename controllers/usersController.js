@@ -14,12 +14,16 @@ async function createUser(req, res, next) {
 				name: req.body.name,
 				membership_status_id: 2, // TODO
 			})
-			await addUserCredential({
+			const newUserCredential = await addUserCredential({
 				mail: req.body.mail,
 				password: hashedPassword,
 				user_id: newUser.id,
 			})
-			res.redirect("/")
+			req.login(newUserCredential, (err) => {
+        if (err) { return next(err) }
+        res.redirect("/")
+      })
+
 		}
 		catch (err) {
 			return next(err)

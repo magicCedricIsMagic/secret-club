@@ -12,7 +12,7 @@ const SQL = `
 `
 
 async function main() {
-  console.log("reinit…")
+  console.log("emptying…")
   const client = new Client({
     connectionString: process.env.DB_CONNECTION_STRING,
   })
