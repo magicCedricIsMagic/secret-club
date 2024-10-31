@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html
-	lang="fr"
-	class="<%= locals.user && "dark-theme" %>"
->
+<%- include("includes/htmlTop") %>
 
 	<head>
 		<%- include("includes/headContent") %>
@@ -16,18 +12,33 @@
 			<div class="spacer vertical xl"></div>
 			<section class="messages">
 				<% for (const message of messages) { %>
+					<% const fromCurrentUser = locals.user && user.id === message.user.id %>
 					<article
-						class="message"
+						class="message <% if (fromCurrentUser) { %>message--from-current-user<% } %>"
 						<% if (message.user?.color) { %>
 							style="--msg-col: <%= message.user.color %>"
 						<% } %>
 					>
 						<div class="message__author">
-							<figure class="message__picture_container">
-								<img class="message__picture" src="<%= message.user?.photo_url %>" />
+
+							<figure class="message__picture-container">
+								<% if (locals.user && message.user.photo_url) { %>
+									<img
+										class="message__picture message__picture--image"
+										src="<%= message.user.photo_url %>"
+										alt="<%= message.user.surname %> <%= message.user.name %>"
+									/>
+								<% } else { %>
+									<i class="message__picture message__picture--icon fas fa-user"></i>
+								<% } %>
 							</figure>
-							<div class="message__author_name">
-								<%= `${message.user.surname} ${message.user.name.toUpperCase()}` %>
+
+							<div class="message__author-name text-truncate text-truncate--2">
+								<% if (locals.user) { %>
+									<%= `${message.user.surname} ${message.user.name.toUpperCase()}` %>
+								<% } else { %>
+									???
+								<% } %>
 							</div>
 						</div>
 						<div class="message__bubble">
@@ -37,7 +48,21 @@
 					</article>
 				<% } %>
 			</section>
+
+			<% if (locals.user) { %>
+				<div class="spacer vertical xxl"></div>
+				<h2 class="h2">Envoyer un nouveau message</h2>
+				<div class="spacer vertical sm"></div>
+				<form class="form" action="/messages/add" method="POST">
+					<label class="form-field">
+						<span class="form-field__label">Message</span>
+						<input class="form-field__input" name="text" required type="text" />
+					</label>
+					<button class="button" type="submit">Envoyer</button>
+				</form>	
+			<% } %>
+
 		</main>
 	</body>
 
-</html>
+<%- include("includes/htmlBottom") %>

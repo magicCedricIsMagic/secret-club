@@ -5,7 +5,7 @@
 }
 
 .badge {
-	--bg-col: var(--col-light);
+	--bg-col: var(--col-contrast);
 	background-color: var(--bg-col);
 	padding: var(--xxxs) var(--sm);
 	border-radius: var(--xs);

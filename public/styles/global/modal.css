@@ -1,13 +1,13 @@
 :root.dark-theme .modal {
 	--shadow-color: color-mix(in srgb, black 15%, transparent);
-	background-color: var(--col-light);
+	background-color: var(--col-contrast);
 	&::backdrop {
 		background-color: color-mix(in srgb, black 90%, transparent);
 	}
 }
 .modal {
-	--shadow-color: color-mix(in srgb, var(--col-dark) 15%, transparent);
-	color: var(--col-dark);
+	--shadow-color: color-mix(in srgb, var(--col-text) 15%, transparent);
+	color: var(--col-text);
 	background-color: var(--col-background);
 	border: none;
 	border-radius: var(--md);
@@ -29,7 +29,7 @@
 	}
 
 	&::backdrop {
-		background-color: color-mix(in srgb, var(--col-dark) 25%, transparent);
+		background-color: color-mix(in srgb, var(--col-text) 25%, transparent);
 		backdrop-filter: blur(var(--sm));
 		transition: var(--transition-slow);
 		@starting-style {

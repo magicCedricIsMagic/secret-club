@@ -10,7 +10,7 @@ textarea {
 	gap: var(--md);
 	width: 60ch;
 	max-width: calc(100vw - var(--lg) * 2);
-	background-color: var(--col-light);
+	background-color: var(--col-contrast);
 	padding: var(--lg);
 	border-radius: var(--md);
 
@@ -42,7 +42,7 @@ textarea {
 	padding: var(--xxs) var(--sm);
 	border-radius: var(--interactive-border-radius);
 	min-height: var(--interactive-min-height);
-	border: 1px solid rgb(from var(--col-dark) r g b / 20%);
+	border: 1px solid rgb(from var(--col-text) r g b / 20%);
 	outline: 3px solid transparent;
 	transition: var(--transition);
 	line-height: var(--line-height);
@@ -83,7 +83,7 @@ textarea {
 		height: var(--sm);
 		translate: 100% 0;
 		border-radius: 999rem;
-		background-color: var(--col-light);
+		background-color: var(--col-contrast);
 		transition: translate var(--transition);
 	}
 }

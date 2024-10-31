@@ -1,5 +1,5 @@
 .separator {
-	border: solid 0px color-mix(in srgb, var(--col-dark) 15%, transparent);
+	border: solid 0px color-mix(in srgb, var(--col-text) 15%, transparent);
 	--space-size: 0;
 	&.xs {
 		--space-size: var(--xs);

@@ -18,13 +18,13 @@
 		outline: 4px solid transparent;
 
 		&:focus-visible {
-			outline-color: rgb(from color-mix(in srgb, var(--col-light) 85%, var(--col-interactive)) r g b / 7.5%);
+			outline-color: rgb(from color-mix(in srgb, var(--col-contrast) 85%, var(--col-interactive)) r g b / 7.5%);
 		}
 
 		&:hover,
 		&:focus-visible {
-			color: color-mix(in srgb, var(--col-dark) 45%, var(--col-interactive));	
-			background-color: color-mix(in srgb, var(--col-light) 87.5%, var(--col-interactive));
+			color: color-mix(in srgb, var(--col-text) 45%, var(--col-interactive));	
+			background-color: color-mix(in srgb, var(--col-contrast) 87.5%, var(--col-interactive));
 			transition: var(--transition-quick);
 		}
 	}

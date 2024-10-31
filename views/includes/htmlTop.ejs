@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html
+	lang="fr"
+	class="<%= locals.user ? "dark-theme" : "" %>"
+	<% if (locals.user) { %>
+		style="
+			--base-col-primary: oklch(from <%= locals.user.color %> 60% 0.2 h);
+			--user-col: oklch(from <%= locals.user.color %> 60% 0.2 h);
+			--user-col-contrast: white;
+		"
+	<% } %>
+>

@@ -12,10 +12,10 @@ const SQL = `
 
   INSERT INTO membership_statuses (name, slug) 
   VALUES
-    ('Guest', 'guest')
-    , ('Unvalidated member', 'unvalidated')
-    , ('Member', 'member')
-    , ('Administrator', 'admin')
+    ('Invité', 'guest')
+    , ('Inscrit non validé', 'unvalidated')
+    , ('Membre', 'member')
+    , ('Administrateur', 'admin')
   ;
 
   CREATE TABLE IF NOT EXISTS users (

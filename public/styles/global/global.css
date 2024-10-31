@@ -1,33 +1,36 @@
 :root {
-	--base-col-primary: oklch(55% 55% 15deg);
+	--base-col-primary: oklch(60% 33% 260deg);
+	--base-col-interactive: oklch(from var(--col-primary) 50% 60% h);
 	--base-col-danger: oklch(from var(--col-interactive) 55% c 30deg);
 	--base-col-success: oklch(from var(--col-interactive) 55% c 170deg);
-	--base-col-interactive: oklch(from var(--col-primary) 50% 75% h);
-	--base-col-dark: oklch(from var(--col-primary) 35% 20% h);
-	--base-col-gray: color-mix(in srgb, var(--col-dark) 40%, white);
-	--base-col-light: color-mix(in srgb, var(--col-dark) 8%, white);
-	
+	--base-col-text: oklch(from var(--col-primary) 35% 20% h);
+	--base-col-gray: color-mix(in srgb, var(--col-text) 40%, white);
+	--base-col-contrast: color-mix(in srgb, var(--col-text) 8%, white);
+
 	--col-primary: var(--base-col-primary);
 	--col-interactive: var(--base-col-interactive);
 	--col-danger: var(--base-col-danger);
 	--col-success: var(--base-col-success);
-	--col-dark: var(--base-col-dark);
+	--col-text: var(--base-col-text);
 	--col-gray: var(--base-col-gray);
-	--col-light: var(--base-col-light);
-	--col-foreground: var(--base-col-light);
+	--col-contrast: var(--base-col-contrast);
+	--col-foreground: var(--base-col-contrast);
 	--col-background: white;
-	
+		
 	&.dark-theme {
 		--col-primary: oklch(from var(--base-col-primary) 90% 15% h);
 		--col-interactive: oklch(from var(--base-col-interactive) 90% 55% h);
 		--col-danger: oklch(from var(--base-col-danger) 75% 65% h);
 		--col-success: oklch(from var(--base-col-success) 75% 65% h);
-		--col-dark: oklch(from var(--base-col-primary) 100% 5% h);
+		--col-text: oklch(from var(--base-col-primary) 100% 5% h);
 		--col-gray: oklch(from var(--base-col-gray) 60% c h);
-		--col-light: oklch(from var(--base-col-dark) 25% 3.5% h);
-		--col-foreground: var(--col-light);
-		--col-background: oklch(from var(--base-col-dark) 15% 3.5% h);
+		--col-contrast: oklch(from var(--base-col-text) 25% 3.5% h);
+		--col-foreground: var(--col-contrast);
+		--col-background: oklch(from var(--base-col-text) 15% 3.5% h);
 	}
+
+	--user-col: var(--col-primary);
+	--user-col-contrast: var(--col-background);
 
 	*:focus-visible {
 		outline-color: rgb(from var(--col-interactive) r g b / 15%);
@@ -82,7 +85,7 @@
 	--transition-quick: 0.125s;
 	
 	font-size: 62.5%;
-	color: var(--col-dark);
+	color: var(--col-text);
 	background-color: var(--col-background);
 	font-family: sans-serif;
 	padding: var(--xl);
@@ -112,7 +115,7 @@ body {
 
 .h1 {
 	font-size: var(--text-xxl);
-	color: color-mix(in srgb, var(--col-primary) 40%, var(--col-dark));
+	color: color-mix(in srgb, var(--col-primary) 40%, var(--col-text));
 }
 
 .h2 {

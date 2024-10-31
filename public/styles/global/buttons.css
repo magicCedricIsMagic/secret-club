@@ -39,7 +39,7 @@
 		--btn-col: var(--col-success);
 	}
 	&.gray {
-		--text-col: var(--col-dark);
+		--text-col: var(--col-text);
 		--btn-col: color-mix(in srgb, var(--col-gray), transparent);
 		--btn-col-hover: oklch(from var(--btn-col) calc(l * 0.9) c h);
 	}

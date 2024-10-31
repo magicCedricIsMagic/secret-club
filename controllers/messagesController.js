@@ -14,6 +14,23 @@ async function getMessagesView (req, res, next) {
 	})
 }
 
+async function createMessage(req, res, next) {
+	if (res.locals.user) {
+		try {
+			const newMessage = await dbMessages.addMessage({
+				text: req.body.text,
+				user_id: res.locals.user.id,
+			})
+			console.log(newMessage)
+			res.redirect("/")
+		}
+		catch (err) {
+			return next(err)
+		}
+	}
+}
+
 module.exports = {
 	getMessagesView,
+	createMessage,
 }
