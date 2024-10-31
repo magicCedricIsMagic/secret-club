@@ -99,6 +99,11 @@ const allRoutes = [
 		title: "Mon compte",
 	},
 	{
+		url: "/my-account/validate",
+		file: "validate-my-account",
+		title: "Valider mon compte",
+	},
+	{
 		url: "/log-out",
 		title: "Déconnexion",
 	},
@@ -110,6 +115,9 @@ app.use((req, res, next) => {
 	}
 	else {
 		res.locals.routes = allRoutes.filter((route) => !["/log-out", "/my-account"].includes(route.url))
+	}
+	if (!res.locals.user || res.locals.user.membershipStatus.slug !== "unvalidated" ) {
+		res.locals.routes = res.locals.routes.filter((route) => route.url !== "/my-account/validate")
 	}
 	next()
 })

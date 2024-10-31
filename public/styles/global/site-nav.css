@@ -13,11 +13,10 @@
 	top: var(--lg);
 	right: var(--lg);
 	display: flex;
-	gap: var(--md);
+	gap: var(--lg);
 	flex-direction: column;
 	color: var(--user-col-contrast);
 	background-color: var(--user-col);
-
 	padding: var(--lg) var(--md);
 	border-radius: var(--md);
 	width: 25rem;
@@ -29,15 +28,12 @@
 		margin-bottom: var(--xxl);
 		flex-direction: row;
 		padding: var(--md) var(--lg);
-		gap: var(--lg);
-		/* justify-content: space-around;
-		justify-content: space-evenly; */
 	}
 }
 
 .site-nav__header {
 	display: flex;
-	gap: var(--xs);
+	gap: var(--sm);
 	flex-direction: column;
 	text-align: center;
 	align-items: center;

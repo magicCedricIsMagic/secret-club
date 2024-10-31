@@ -1,0 +1,27 @@
+<%- include("includes/htmlTop") %>
+	<head>
+		<%- include("includes/headContent") %>
+	</head>
+
+	<body>
+		<%- include("includes/header") %>
+		<main class="main">
+			<h1 class="h1"><%= title %></h1>
+			<div class="spacer vertical lg"></div>
+			
+			<h1 class="h2">Valider mon compte</h1>
+			<div class="spacer vertical sm"></div>
+			<form class="form" action="/my-account/validate" method="POST">
+
+				<label class="form-field">
+					<span class="form-field__label">Code secret</span>
+					<input class="form-field__input" name="secret_validation_code" required type="password" />
+				</label>
+
+				<button class="button" type="submit">Envoyer</button>
+			</form>
+		</main>
+
+	</body>
+
+<%- include("includes/htmlBottom") %>

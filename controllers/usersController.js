@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs")
-const { addUser, updateUser, deleteUser } = require("../db/queries/usersQueries")
+const usersQueries = require("../db/queries/usersQueries")
 const {
 	addUserCredential,
 	updateUserMail,
@@ -9,7 +9,7 @@ const {
 async function createUser(req, res, next) {
 	bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
 		try {
-			const newUser = await addUser({
+			const newUser = await usersQueries.addUser({
 				surname: req.body.surname,
 				name: req.body.name,
 				color: `#${Math.floor(Math.random() * 16777215).toString(16)}`, // random color
@@ -35,7 +35,7 @@ async function createUser(req, res, next) {
 async function modifyUser(req, res, next) {
 	try {
 		console.log("res.locals.user", res.locals.user)
-		await updateUser({
+		await usersQueries.updateUser({
 			id: res.locals.user.id,
 			surname: req.body.surname,
 			name: req.body.name,
@@ -56,10 +56,28 @@ async function modifyUser(req, res, next) {
 	}
 }
 
+async function validateUser(req, res, next) {
+	if (req.body.secret_validation_code === "Code secret") {
+		try {
+			await usersQueries.updateUser({
+				...res.locals.user,
+				membership_status_id: 3 // TODO,
+			})
+			res.redirect("/")
+		}
+		catch (err) {
+			return next(err)
+		}
+	}
+	else {
+		res.redirect("/my-account/validate")
+	}
+}
+
 async function removeUser(req, res, next) {
 	try {
 		req.logout((err) => { if (err) return next(err) })
-		await deleteUser(res.locals.user.id)
+		await usersQueries.deleteUser(res.locals.user.id)
 		res.redirect("/")
 	}
 	catch (err) {
@@ -70,5 +88,6 @@ async function removeUser(req, res, next) {
 module.exports = {
 	createUser,
 	modifyUser,
+	validateUser,
 	removeUser,
 }

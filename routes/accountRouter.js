@@ -17,7 +17,11 @@ accountRouter.get("/", globalController.getView)
 
 accountRouter.post("/update", usersController.modifyUser)
 
+accountRouter.get("/validate", globalController.getView)
+accountRouter.post("/validate", usersController.validateUser)
+
 accountRouter.post("/delete", usersController.removeUser)
+
 
 accountRouter.get("/*", (req, res, next) => {
 	throw new CustomError(

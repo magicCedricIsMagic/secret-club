@@ -48,6 +48,10 @@
 		min-height: 0;
 		padding: var(--xxs) var(--sm);
 	}
+	&.lg {
+		font-size: var(--text-lg);
+		padding: var(--sm) var(--lg);
+	}
 	@media (width < 800px) {
 		padding-inline: var(--sm);
 	}

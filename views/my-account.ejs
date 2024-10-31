@@ -51,10 +51,14 @@
 					/>
 				</div>
 
-				<button class="button" type="submit">Modifier</button>
+				<div class="flex column align-center">
+					<button class="button lg" type="submit">Modifier</button>
+				</div>
 			</form>
-			<div class="spacer vertical md"></div>
-			<button class="button sm danger" onclick="openDeleteAccountModal()">Supprimer mon compte</button>
+			<div class="spacer vertical lg"></div>
+			<div class="flex column align-center">
+				<button class="button sm danger" onclick="openDeleteAccountModal()">Supprimer mon compte</button>
+			</div>
 
 			<dialog id="delete-account-modal" class="modal">
 				<h3 class="h3">Êtes-vous sûr de vouloir supprimer votre compte&nbsp;?</h3>
