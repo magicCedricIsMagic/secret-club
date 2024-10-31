@@ -1,3 +1,5 @@
+<% const isUnvalidated = locals.user && user.membershipStatus.slug === "unvalidated" %>
+
 <%- include("includes/htmlTop") %>
 
 	<head>
@@ -22,7 +24,7 @@
 						<div class="message__author">
 
 							<figure class="message__picture-container">
-								<% if (locals.user && user.membershipStatus.slug !== "unvalidated" && message.user.photo_url) { %>
+								<% if (locals.user && (!isUnvalidated || fromCurrentUser) && message.user.photo_url) { %>
 									<img
 										class="message__picture message__picture--image"
 										src="<%= message.user.photo_url %>"
@@ -34,7 +36,7 @@
 							</figure>
 
 							<div class="message__author-name text-truncate text-truncate--2">
-								<% if (locals.user && user.membershipStatus.slug !== "unvalidated") { %>
+								<% if (locals.user && (!isUnvalidated || fromCurrentUser)) { %>
 									<%= `${message.user.surname} ${message.user.name.toUpperCase()}` %>
 								<% } else { %>
 									???
@@ -51,7 +53,7 @@
 				<div>
 					<div class="spacer vertical lg"></div>
 					<% if (locals.user) { %>
-						<% if (user.membershipStatus.slug === "unvalidated") { %>
+						<% if (isUnvalidated) { %>
 							<section class="card">
 								<h2 class="h3 text-center">Vous devez valider votre compte<br />avant de pouvoir envoyer un message</h2>
 								<div class="spacer vertical md"></div>
