@@ -48,28 +48,43 @@
 					</article>
 				<% } %>
 
-				<% if (locals.user) { %>
-					<section class="flex column align-center gap-xxs">
-						<div class="spacer vertical lg"></div>
+				<div>
+					<div class="spacer vertical lg"></div>
+					<% if (locals.user) { %>
 						<% if (user.membershipStatus.slug === "unvalidated") { %>
-							<h2 class="h3 text-center">Vous devez valider votre compte<br />avant de pouvoir envoyer un message</h2>
-							<div class="spacer vertical sm"></div>
-							<a class="button" href="/my-account/validate">Valider mon compte</a>
-						<% } else { %>
-							<h2 class="h2">Envoyer un nouveau message</h2>
-							<div class="spacer vertical sm"></div>
-							<form class="form" action="/messages/add" method="POST">
-								<label class="form-field">
-									<span class="form-field__label">Message</span>
-									<input class="form-field__input" name="text" required type="text" />
-								</label>
+							<section class="card">
+								<h2 class="h3 text-center">Vous devez valider votre compte<br />avant de pouvoir envoyer un message</h2>
+								<div class="spacer vertical md"></div>
 								<div class="flex justify-center">
-									<button class="button" type="submit">Envoyer</button>
+									<a class="button" href="/my-account/validate">Valider mon compte</a>
 								</div>
-							</form>
+							</section>
+						<% } else { %>
+							<section>
+								<h2 class="h2 text-center">Envoyer un nouveau message</h2>
+								<div class="spacer vertical md"></div>
+								<form class="form" action="/messages/add" method="POST">
+									<label class="form-field">
+										<span class="form-field__label">Message</span>
+										<input class="form-field__input" name="text" required type="text" />
+									</label>
+									<div class="flex justify-center">
+										<button class="button" type="submit">Envoyer</button>
+									</div>
+								</form>
+							</section>
 						<% } %>
-					</section>
-				<% } %>
+					<% } else { %>
+						<section class="card">
+							<h2 class="h3 text-center">Vous devez être membre<br />pour pouvoir envoyer un message</h2>
+							<div class="spacer vertical md"></div>
+							<div class="flex justify-center">
+								<a class="button" href="/my-account/log-in">Connexion</a>
+								<a class="button" href="/my-account/sign-up">Inscription</a>
+							</div>
+						</section>
+					<% } %>
+				</section>
 				
 			</section>
 
