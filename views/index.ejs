@@ -22,7 +22,7 @@
 						<div class="message__author">
 
 							<figure class="message__picture-container">
-								<% if (locals.user && message.user.photo_url) { %>
+								<% if (locals.user && user.membershipStatus.slug !== "unvalidated" && message.user.photo_url) { %>
 									<img
 										class="message__picture message__picture--image"
 										src="<%= message.user.photo_url %>"
@@ -34,7 +34,7 @@
 							</figure>
 
 							<div class="message__author-name text-truncate text-truncate--2">
-								<% if (locals.user) { %>
+								<% if (locals.user && user.membershipStatus.slug !== "unvalidated") { %>
 									<%= `${message.user.surname} ${message.user.name.toUpperCase()}` %>
 								<% } else { %>
 									???
@@ -63,7 +63,7 @@
 									<span class="form-field__label">Message</span>
 									<input class="form-field__input" name="text" required type="text" />
 								</label>
-								<div class="flex column align-center">
+								<div class="flex justify-center">
 									<button class="button" type="submit">Envoyer</button>
 								</div>
 							</form>

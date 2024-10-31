@@ -2,7 +2,8 @@
 	display: flex;
 	gap: var(--lg);
 	flex-direction: column;
-	max-width: 80rem;
+	/* max-width: 80rem; */
+	max-width: 60ch;
 }
 
 .message {
@@ -116,5 +117,5 @@
 }
 
 .message__text {
-	font-size: var(--text-xl);
+	font-size: var(--text-lg);
 }

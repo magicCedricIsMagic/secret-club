@@ -51,12 +51,12 @@
 					/>
 				</div>
 
-				<div class="flex column align-center">
+				<div class="flex justify-center">
 					<button class="button lg" type="submit">Modifier</button>
 				</div>
 			</form>
 			<div class="spacer vertical lg"></div>
-			<div class="flex column align-center">
+			<div class="flex justify-center">
 				<button class="button sm danger" onclick="openDeleteAccountModal()">Supprimer mon compte</button>
 			</div>
 
@@ -65,7 +65,7 @@
 				<div class="spacer vertical md"></div>
 				<p>La suppression sera définitive.</p>
 				<div class="spacer vertical lg"></div>
-				<div class="flex gap-sm justify-end align-center">
+				<div class="flex gap-sm justify-center align-center">
 					<button class="button gray" onclick="closeDeleteAccountModal()">Annnuler</button>
 					<form action="/my-account/delete" method="POST">
 						<button type="submit" class="button danger" onclick="closeDeleteAccountModal()">Supprimer</button>
