@@ -60,7 +60,8 @@ textarea {
 		}
 	}
 }
-.form-field__switch {
+
+.form-field__input--switch {
 	cursor: pointer;
 	border: unset;
 	outline: 3px solid transparent;
@@ -94,6 +95,32 @@ textarea {
 	background-color: var(--col-gray);
 }
 
+.form-field__input--checkbox,
+.form-field__input--radio {
+	display: flex;
+	gap: var(--xxs);
+	input {
+		outline: 0 solid transparent;
+		transition: var(--transition);
+		&:focus-visible {
+			outline: 2px solid color-mix(in srgb, var(--col-interactive) 40%, transparent);
+		}
+	}
+}
+
+.form-field__input--color {
+	cursor: pointer;
+	padding: var(--xxxs);
+	width: var(--interactive-min-height);
+	&::-webkit-color-swatch-wrapper {
+		padding: 0;
+	}
+	&::-webkit-color-swatch {
+		border-radius: var(--xxs);
+		border-color: var(--col-gray);
+	}
+}
+
 .form-field__fieldset {
 	padding: var(--sm);
 	border-radius: var(--xs);
@@ -109,18 +136,5 @@ textarea {
 
 	.form-field__label {
 		padding: 0 var(--xs);
-	}
-}
-
-.form-field__checkbox,
-.form-field__radio {
-	display: flex;
-	gap: var(--xxs);
-	input {
-		outline: 0 solid transparent;
-		transition: var(--transition);
-		&:focus-visible {
-			outline: 2px solid color-mix(in srgb, var(--col-interactive) 40%, transparent);
-		}
 	}
 }

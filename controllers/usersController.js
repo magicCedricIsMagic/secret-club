@@ -12,6 +12,7 @@ async function createUser(req, res, next) {
 			const newUser = await addUser({
 				surname: req.body.surname,
 				name: req.body.name,
+				color: `#${Math.floor(Math.random() * 16777215).toString(16)}`, // random color
 				membership_status_id: 2, // TODO
 			})
 			const newUserCredential = await addUserCredential({
@@ -39,6 +40,7 @@ async function modifyUser(req, res, next) {
 			surname: req.body.surname,
 			name: req.body.name,
 			photo_url: req.body.photo,
+			color: req.body.color,
 			membership_status_id: res.locals.user.membership_status_id,
 		})
 		const userCredentials = await getUserCredentialByUserId(res.locals.user.id)

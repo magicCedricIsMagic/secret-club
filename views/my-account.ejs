@@ -44,7 +44,18 @@
 						value="<%= user.photo_url %>"
 					/>
 				</label>
-				
+
+				<div class="form-field">
+					<label for="user-color" class="form-field__label">Couleur</label>
+					<input
+						id="user-color"
+						class="form-field__input form-field__input--color"
+						name="color"
+						type="color"
+						value="<%= user.color %>"
+					/>
+				</div>
+
 				<button class="button" type="submit">Modifier</button>
 			</form>
 			<div class="spacer vertical md"></div>
