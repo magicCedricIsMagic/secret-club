@@ -12,7 +12,7 @@ async function createUser(req, res, next) {
 			const newUser = await usersQueries.addUser({
 				surname: req.body.surname,
 				name: req.body.name,
-				color: `#${Math.floor(Math.random() * 16777215).toString(16)}`, // random color
+				color: "#" + ("000000" + Math.random().toString(16).slice(2, 8)).slice(-6), // random color
 				membership_status_id: 2, // TODO
 			})
 			const newUserCredential = await addUserCredential({
@@ -24,7 +24,6 @@ async function createUser(req, res, next) {
         if (err) { return next(err) }
         res.redirect("/")
       })
-
 		}
 		catch (err) {
 			return next(err)

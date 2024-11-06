@@ -9,6 +9,16 @@ function getView (req, res, next) {
 	})
 }
 
+function getFormErrorView (req, res, next, params) {
+	const route = res.locals.routes.find(route => route.url === req.originalUrl)
+	res.status(400).render(route.file, {
+		title: route.title,
+		route,
+		errors: params.errors,
+		previousForm: params.previousForm,
+	})
+}
+
 function getErrorView (err, req, res, next) {
 	res.render("error", {
 		title: `Erreur ${err.statusCode}`,
@@ -20,4 +30,5 @@ function getErrorView (err, req, res, next) {
 module.exports = {
 	getView,
 	getErrorView,
+	getFormErrorView,
 }

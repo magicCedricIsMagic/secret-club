@@ -2,6 +2,7 @@
 	--base-col-primary: oklch(60% 33% 260deg);
 	--base-col-interactive: oklch(from var(--col-primary) 50% 60% h);
 	--base-col-danger: oklch(from var(--col-interactive) 55% c 30deg);
+	--base-col-warning: oklch(from var(--col-interactive) 55% c 70deg);
 	--base-col-success: oklch(from var(--col-interactive) 55% c 170deg);
 	--base-col-text: oklch(from var(--col-primary) 35% 20% h);
 	--base-col-gray: color-mix(in srgb, var(--col-text) 40%, white);
@@ -10,6 +11,7 @@
 	--col-primary: var(--base-col-primary);
 	--col-interactive: var(--base-col-interactive);
 	--col-danger: var(--base-col-danger);
+	--col-warning: var(--base-col-warning);
 	--col-success: var(--base-col-success);
 	--col-text: var(--base-col-text);
 	--col-gray: var(--base-col-gray);
@@ -21,6 +23,7 @@
 		--col-primary: oklch(from var(--base-col-primary) 90% 15% h);
 		--col-interactive: oklch(from var(--base-col-interactive) 90% 55% h);
 		--col-danger: oklch(from var(--base-col-danger) 75% 65% h);
+		--col-warning: oklch(from var(--base-col-warning) 75% 65% h);
 		--col-success: oklch(from var(--base-col-success) 75% 65% h);
 		--col-text: oklch(from var(--base-col-primary) 100% 5% h);
 		--col-gray: oklch(from var(--base-col-gray) 60% c h);
@@ -61,7 +64,7 @@
 
 	--text-thin: 300;
 	--text-normal: 400;
-	--text-medium: 500;
+	--text-medium: 600;
 	--text-bold: 800;
 
 	--column-xxs: 10rem;

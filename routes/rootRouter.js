@@ -3,6 +3,7 @@ const { Router } = require("express")
 const passport = require("passport")
 const rootRouter = Router()
 const CustomError = require("../utils/CustomError")
+const { body, validationResult  } = require("express-validator")
 
 const globalController = require("../controllers/globalController.js")
 const messagesController = require("../controllers/messagesController.js")
@@ -23,7 +24,44 @@ rootRouter.post(
 	})
 )
 
-rootRouter.post("/sign-up", async (req, res, next) => await usersController.createUser(req, res, next))
+const passwordMinLength = 8
+rootRouter.post(
+	"/sign-up",
+	body("password")
+		.isLength({ min: passwordMinLength })
+		.withMessage(`Votre mot de passe doit contenir au moins ${passwordMinLength} caractères`),
+	body("password")
+		.matches(/[a-z]/)
+		.withMessage(`Votre mot de passe doit contenir une minuscule`),
+	body("password")
+		.matches(/[A-Z]/)
+		.withMessage(`Votre mot de passe doit contenir une majuscule`),
+	body("password")
+		.matches(/\d/)
+		.withMessage(`Votre mot de passe doit contenir un chiffre`),
+	body("password")
+		.matches(/[^a-zA-Z\d]/)
+		.withMessage(`Votre mot de passe doit contenir un symbole`),
+  body("password_confirm")
+		.custom((value, { req }) => value === req.body.password)
+		.withMessage("Les mots de passes ne sont pas identiques"),
+	async (req, res, next) => {
+		const errors = validationResult(req)
+		if (!errors.isEmpty()) {
+			return globalController.getFormErrorView(req, res, next, {
+				errors: errors.array(),
+        previousForm: {
+					name: req.body.name,
+          surname: req.body.surname,
+          mail: req.body.mail,
+        }
+			})
+		}
+		else {
+			return await usersController.createUser(req, res, next)
+		}
+	}
+)
 
 rootRouter.get("/log-out", (req, res, next) => {
 	req.logout((err) => {

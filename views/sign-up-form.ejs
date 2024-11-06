@@ -6,6 +6,31 @@
 
 	<body>
 		<%- include("includes/header") %>
+		<% if (locals.errors) { %>
+			<dialog id="toast-form-errors-registration" class="toast toast--warning" open onclick="handleClickToast()">
+				<h2 class="toast__title">Erreur<%= errors.length > 1 ? "s" : "" %> de formulaire</h2>
+				<ul class="toast__errors">
+					<% for (const error of errors) { %>
+						<li class="toast__error"><%= error.msg %></li>
+					<% } %>
+				</ul>
+			</dialog>
+			<script>
+				const toastFormErrorsRegistration = document.querySelector("#toast-form-errors-registration")
+				setTimeout(() => {
+					closeToast()
+				}, 5000)
+				function handleClickToast() {
+					closeToast()
+				}
+				function closeToast() {
+					toastFormErrorsRegistration.classList.add("toast--is-closing")
+					setTimeout(() => {
+						toastFormErrorsRegistration.remove()
+					}, 1000)
+				}
+			</script>
+		<% } %>
 		<main class="main">
 			<h1 class="h1"><%= title %></h1>
 			<div class="spacer vertical lg"></div>
@@ -14,23 +39,29 @@
 
 				<label class="form-field">
 					<span class="form-field__label">Prénom</span>
-					<input class="form-field__input" name="surname" required type="text" />
+					<input class="form-field__input" name="surname" required type="text" value="<%= locals.previousForm?.surname %>" />
 				</label>
 
 				<label class="form-field">
 					<span class="form-field__label">Nom</span>
-					<input class="form-field__input" name="name" required type="text" />
+					<input class="form-field__input" name="name" required type="text" value="<%= locals.previousForm?.name %>" />
 				</label>
 
 				<label class="form-field">
 					<span class="form-field__label">E-mail</span>
-					<input class="form-field__input" name="mail" required type="email" />
+					<input class="form-field__input" name="mail" required type="email" value="<%= locals.previousForm?.mail %>" />
 				</label>
 
 				<label class="form-field">
 					<span class="form-field__label">Mot de passe</span>
 					<input class="form-field__input" name="password" required type="password" />
 				</label>
+				
+				<label class="form-field">
+					<span class="form-field__label">Confirmer le mot de passe</span>
+					<input class="form-field__input" name="password_confirm" required type="password" />
+				</label>
+
 				<div class="flex justify-center">
 					<button class="button" type="submit">Inscription</button>
 				</div>
