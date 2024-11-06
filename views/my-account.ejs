@@ -57,7 +57,7 @@
 			</form>
 			<div class="spacer vertical lg"></div>
 			<div class="flex justify-center">
-				<button class="button sm danger" onclick="openDeleteAccountModal()">Supprimer mon compte</button>
+				<button class="button button--sm button--danger" onclick="openDeleteAccountModal()">Supprimer mon compte</button>
 			</div>
 
 			<dialog id="delete-account-modal" class="modal">
@@ -66,9 +66,9 @@
 				<p>La suppression sera définitive.</p>
 				<div class="spacer vertical lg"></div>
 				<div class="flex gap-sm justify-center align-center">
-					<button class="button gray" onclick="closeDeleteAccountModal()">Annnuler</button>
+					<button class="button button--gray" onclick="closeDeleteAccountModal()">Annnuler</button>
 					<form action="/my-account/delete" method="POST">
-						<button type="submit" class="button danger" onclick="closeDeleteAccountModal()">Supprimer</button>
+						<button type="submit" class="button button--danger" onclick="closeDeleteAccountModal()">Supprimer</button>
 					</form>
 				</div>
 			</dialog>

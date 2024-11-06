@@ -32,29 +32,30 @@
 	&:focus-visible {
 		outline-color: rgb(from var(--btn-col-hover) r g b / 30%);
 	}
-	&.danger {
-		--btn-col: var(--col-danger);
-	}
-	&.success {
-		--btn-col: var(--col-success);
-	}
-	&.gray {
-		--text-col: var(--col-text);
-		--btn-col: color-mix(in srgb, var(--col-gray), transparent);
-		--btn-col-hover: oklch(from var(--btn-col) calc(l * 0.9) c h);
-	}
-	&.sm {
-		font-size: var(--text-sm);
-		min-height: 0;
-		padding: var(--xxs) var(--sm);
-	}
-	&.lg {
-		font-size: var(--text-lg);
-		padding: var(--sm) var(--lg);
-	}
 	@media (width < 800px) {
 		padding-inline: var(--sm);
 	}
+}
+
+ .button--danger {
+	--btn-col: var(--col-danger);
+}
+.button--success {
+	--btn-col: var(--col-success);
+}
+.button--gray {
+	--text-col: var(--col-text);
+	--btn-col: color-mix(in srgb, var(--col-gray), transparent);
+	--btn-col-hover: oklch(from var(--btn-col) calc(l * 0.9) c h);
+}
+.button--sm {
+	font-size: var(--text-sm);
+	min-height: 0;
+	padding: var(--xxs) var(--sm);
+}
+.button--lg {
+	font-size: var(--text-lg);
+	padding: var(--sm) var(--lg);
 }
 
 .button--inline {
@@ -70,4 +71,14 @@
 		background-color: color-mix(in srgb, var(--btn-col) 20%, transparent);
 		scale: unset;
 	}
+}
+
+.button--circle {
+	padding: unset;
+	width: var(--md);
+	height: var(--md);
+	border-radius: 999rem;
+	display: grid;
+	place-items: center;
+	font-size: var(--text-md);
 }

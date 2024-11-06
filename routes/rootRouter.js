@@ -19,7 +19,7 @@ rootRouter.post(
 	"/log-in",
 	passport.authenticate("local", {
 		successRedirect: "/",
-		failureRedirect: "/sign-up",
+		failureRedirect: "/log-in",
 		// failureMessage: true,
 	})
 )

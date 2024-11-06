@@ -5,6 +5,7 @@ const {
 	updateUserMail,
 	getUserCredentialByUserId,
 } = require("../db/queries/userCredentialsQueries")
+const { sendMemberPasswordMail } = require('./mailerController')
 
 async function createUser(req, res, next) {
 	bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
@@ -20,8 +21,17 @@ async function createUser(req, res, next) {
 				password: hashedPassword,
 				user_id: newUser.id,
 			})
-			req.login(newUserCredential, (err) => {
-        if (err) { return next(err) }
+
+			req.login(newUserCredential, async (err) => {
+				if (err) {
+					return next(err)
+				}
+				await sendMemberPasswordMail(req, res, next, {
+					user: {
+						...newUser,
+						mail: newUserCredential.mail
+					}
+				})
         res.redirect("/")
       })
 		}
@@ -56,7 +66,7 @@ async function modifyUser(req, res, next) {
 }
 
 async function validateUser(req, res, next) {
-	if (req.body.secret_validation_code === "Code secret") {
+	if (req.body.secret_validation_code === process.env.SECRET_PASSWORD) {
 		try {
 			await usersQueries.updateUser({
 				...res.locals.user,

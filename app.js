@@ -23,9 +23,9 @@ const { displayDate, displayHour } = require("./utils/dates")
 app.locals.displayDate = displayDate
 app.locals.displayHour = displayHour
 
-const { getUser } = require('./db/queries/usersQueries')
-const { getUserCredentialByMail, getUserCredential } = require('./db/queries/userCredentialsQueries')
-const { getMembershipStatus } = require('./db/queries/membershipStatusesQueries')
+const { getUser } = require("./db/queries/usersQueries")
+const { getUserCredentialByMail, getUserCredential } = require("./db/queries/userCredentialsQueries")
+const { getMembershipStatus } = require("./db/queries/membershipStatusesQueries")
 
 passport.use(
   new LocalStrategy(async (username, password, callback) => {

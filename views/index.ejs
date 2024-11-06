@@ -22,7 +22,6 @@
 						<% } %>
 					>
 						<div class="message__author">
-
 							<figure class="message__picture-container">
 								<% if (locals.user && (!isUnvalidated || fromCurrentUser) && message.user.photo_url) { %>
 									<img
@@ -43,10 +42,34 @@
 								<% } %>
 							</div>
 						</div>
+
 						<div class="message__bubble">
 							<div class="message__date">Envoyé le <%= locals.displayDate(message.date)%> à <%= locals.displayHour(message.date) %></div>
 							<div class="message__text"><%= message.text %></div>
+							<% if (locals.user?.membershipStatus.slug === "admin") { %>
+								<button
+									class="message__delete-button button button--circle button--sm button--danger"
+									onclick=<%= `openDeleteMessageModal(${message.id})` %>
+									title="Supprimer le message"
+								>
+									<i class="fas fa-times"></i>
+								</button>
+	
+								<dialog id="delete-message-modal-<%= message.id %>" class="modal">
+									<h3 class="h3">Êtes-vous sûr de vouloir supprimer ce message&nbsp;?</h3>
+									<div class="spacer vertical md"></div>
+									<p>La suppression sera définitive.</p>
+									<div class="spacer vertical lg"></div>
+									<div class="flex gap-sm justify-center align-center">
+										<button class="button button--gray" onclick=<%= `closeDeleteMessageModal(${message.id})`%>>Annnuler</button>
+										<form action="/messages/<%= message.id %>/delete" method="POST">
+											<button type="submit" class="button button--danger" onclick=<%= `closeDeleteMessageModal(${message.id})`%>>Supprimer</button>
+										</form>
+									</div>
+								</dialog>
+							<% } %>
 						</div>
+
 					</article>
 				<% } %>
 
@@ -91,6 +114,22 @@
 			</section>
 
 		</main>
+
+		<script>
+			function openDeleteMessageModal(id) {
+				const deleteMessageModal = document.querySelector(`#delete-message-modal-${id}`)
+				deleteMessageModal.showModal()
+			}
+			function closeDeleteMessageModal(id) {
+				const deleteMessageModal = document.querySelector(`#delete-message-modal-${id}`)
+				deleteMessageModal.classList.add("is-closing")
+				setTimeout(() => {
+					deleteMessageModal.classList.remove("is-closing")
+					deleteMessageModal.close()
+				}, 500)
+			}
+		</script>
+
 	</body>
 
 <%- include("includes/htmlBottom") %>

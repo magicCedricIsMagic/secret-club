@@ -93,6 +93,14 @@
 		border-top-width: 0;
 		border-bottom-color: transparent;
 	}
+	@media (width >= 800px) {
+		&:not(:hover) {
+			.message__delete-button:not(:focus-visible) {
+				opacity: 0;
+				scale: 0.33;
+			}
+		}
+	}
 }
 .message:not(.message--from-current-user) .message__bubble {
 	border-top-left-radius: 0;
@@ -118,4 +126,11 @@
 
 .message__text {
 	font-size: var(--text-lg);
+}
+
+.message__delete-button {
+	position: absolute;
+	top: var(--sm);
+	right: var(--sm);
+	transition: var(--transition);
 }

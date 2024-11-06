@@ -17,11 +17,10 @@ async function getMessagesView (req, res, next) {
 async function createMessage(req, res, next) {
 	if (res.locals.user) {
 		try {
-			const newMessage = await dbMessages.addMessage({
+			await dbMessages.addMessage({
 				text: req.body.text,
 				user_id: res.locals.user.id,
 			})
-			console.log(newMessage)
 			res.redirect("/")
 		}
 		catch (err) {
@@ -30,7 +29,17 @@ async function createMessage(req, res, next) {
 	}
 }
 
+async function deleteMessage(req, res, next, messageId) {
+	try {
+		await dbMessages.deleteMessage(messageId)
+	}
+	catch (err) {
+		return next(err)
+	}
+}
+
 module.exports = {
 	getMessagesView,
 	createMessage,
+	deleteMessage,
 }

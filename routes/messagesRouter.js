@@ -14,6 +14,21 @@ messagesRouter.get("/*", (req, res, next) => {
 
 messagesRouter.post("/add", messagesController.createMessage)
 
+messagesRouter.post("/:id/delete", (req, res, next) => {
+	const messageId = req.params?.id
+	if (res.locals.user?.membershipStatus.slug === "admin" && messageId) {
+		messagesController.deleteMessage(req, res, next, messageId)
+		res.redirect("/")	
+	}
+	else {
+		throw new CustomError(
+			"Non autorisé", 
+			"Vous n'êtes pas autorisé à supprimer ce message.", 
+			400
+		)
+	}
+})
+
 messagesRouter.use((err, req, res, next) => globalController.getErrorView(err, req, res, next))
 
 module.exports = messagesRouter

@@ -5,6 +5,7 @@ const CustomError = require("../utils/CustomError")
 const accountRouter = Router()
 const globalController = require("../controllers/globalController.js")
 const usersController = require("../controllers/usersController.js")
+const mailerController = require("../controllers/mailerController.js")
 
 accountRouter.use((req, res, next) => {
 	if (!res.locals.user) {
@@ -22,6 +23,11 @@ accountRouter.post("/validate", usersController.validateUser)
 
 accountRouter.post("/delete", usersController.removeUser)
 
+accountRouter.post("/send-secret-password", (req, res, next) => {
+	mailerController.sendMemberPasswordMail(req, res, next, {
+		user: res.locals.user
+	})
+})
 
 accountRouter.get("/*", (req, res, next) => {
 	throw new CustomError(
