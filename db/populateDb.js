@@ -12,8 +12,7 @@ const SQL = `
 
   INSERT INTO membership_statuses (name, slug) 
   VALUES
-    ('Invité', 'guest')
-    , ('Inscrit non validé', 'unvalidated')
+    ('Inscrit non validé', 'unvalidated')
     , ('Membre', 'member')
     , ('Administrateur', 'admin')
   ;
@@ -43,43 +42,6 @@ const SQL = `
     , user_id INTEGER NOT NULL
     , CONSTRAINT FK_Message_User FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
   );
-
-
-  INSERT INTO users (
-    name
-    , surname
-    , photo_url
-    , color
-    , membership_status_id
-  ) 
-  VALUES (
-    'Gallon'
-    , 'Cédric'
-    , 'https://transforms.stlzoo.org/production/animals/grizzly-bear-01-01.jpg?w=1200&h=1200&auto=compress%2Cformat&fit=crop&dm=1658944720&s=2872e362d84d62c84bdda87d94876b64'
-    , '#344cb7'
-    , '1'
-  );
-
-  INSERT INTO user_credentials (
-    mail
-    , password
-    , user_id
-  ) 
-  VALUES (
-    'cedric.gallon@mail.fr'
-    , '$2a$10$86y4F6t49QIH0nU4/E9uBehdYNNTb.ldqp.mLMO0m9Q8fQSJ3107i'
-    , '1'
-  );
-
-  INSERT INTO messages (
-    text
-    , user_id
-  ) 
-  VALUES (
-    'Bonjour.'
-    , '1'
-  );
-
 `
 
 async function main() {

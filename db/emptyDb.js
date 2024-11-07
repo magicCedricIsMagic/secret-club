@@ -8,7 +8,6 @@ const SQL = `
   DROP TABLE user_credentials;
   DROP TABLE users;
   DROP TABLE membership_statuses;
-
 `
 
 async function main() {

@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs")
 const usersQueries = require("../db/queries/usersQueries")
+const membershipStatusesQueries = require("../db/queries/membershipStatusesQueries")
 const {
 	addUserCredential,
 	updateUserMail,
@@ -10,11 +11,12 @@ const { sendMemberPasswordMail } = require('./mailerController')
 async function createUser(req, res, next) {
 	bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
 		try {
+			const membershipStatuses = await membershipStatusesQueries.getAllMembershipStatuses()
 			const newUser = await usersQueries.addUser({
 				surname: req.body.surname,
 				name: req.body.name,
 				color: "#" + ("000000" + Math.random().toString(16).slice(2, 8)).slice(-6), // random color
-				membership_status_id: 2, // TODO
+				membership_status_id: (membershipStatuses.find(mS => mS.slug === "unvalidated")).id,
 			})
 			const newUserCredential = await addUserCredential({
 				mail: req.body.mail,
@@ -43,7 +45,6 @@ async function createUser(req, res, next) {
 
 async function modifyUser(req, res, next) {
 	try {
-		console.log("res.locals.user", res.locals.user)
 		await usersQueries.updateUser({
 			id: res.locals.user.id,
 			surname: req.body.surname,
@@ -68,9 +69,10 @@ async function modifyUser(req, res, next) {
 async function validateUser(req, res, next) {
 	if (req.body.secret_validation_code === process.env.SECRET_PASSWORD) {
 		try {
+			const membershipStatuses = await membershipStatusesQueries.getAllMembershipStatuses()
 			await usersQueries.updateUser({
 				...res.locals.user,
-				membership_status_id: 3 // TODO,
+				membership_status_id: (membershipStatuses.find(mS => mS.slug === "member")).id,
 			})
 			res.redirect("/")
 		}
