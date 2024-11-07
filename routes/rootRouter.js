@@ -4,6 +4,7 @@ const passport = require("passport")
 const rootRouter = Router()
 const CustomError = require("../utils/CustomError")
 const { body, validationResult  } = require("express-validator")
+const userCredentialsQueries = require("../db/queries/userCredentialsQueries")
 
 const globalController = require("../controllers/globalController.js")
 const messagesController = require("../controllers/messagesController.js")
@@ -27,6 +28,12 @@ rootRouter.post(
 const passwordMinLength = 8
 rootRouter.post(
 	"/sign-up",
+	body("mail")
+		.custom(async (value) => {
+			const foundMail = await userCredentialsQueries.getUserCredentialByMail(value)
+			if (foundMail) throw new Error(/* "Cette adresse e-mail est déjà utilisée" */)
+		})
+		.withMessage("Cette adresse e-mail est déjà utilisée"),
 	body("password")
 		.isLength({ min: passwordMinLength })
 		.withMessage(`Votre mot de passe doit contenir au moins ${passwordMinLength} caractères`),
