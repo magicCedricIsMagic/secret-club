@@ -33,6 +33,7 @@
 
 
 .message__author {
+	flex: none;
 	width: var(--xxxl);
 	display: flex;
 	flex-direction: column;
