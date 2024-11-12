@@ -11,7 +11,7 @@
 		<%- include("includes/header") %>
 		<main class="main">
 			<h1 class="h1"><%= title %></h1>
-			<div class="spacer vertical xl"></div>
+			<div class="spacer spacer--vertical spacer--xl"></div>
 			<section class="messages">
 				<% for (const message of messages) { %>
 					<% const fromCurrentUser = locals.user && user.id === message.user.id %>
@@ -57,9 +57,9 @@
 	
 								<dialog id="delete-message-modal-<%= message.id %>" class="modal">
 									<h3 class="h3">Êtes-vous sûr de vouloir supprimer ce message&nbsp;?</h3>
-									<div class="spacer vertical md"></div>
+									<div class="spacer spacer--vertical spacer--md"></div>
 									<p>La suppression sera définitive.</p>
-									<div class="spacer vertical lg"></div>
+									<div class="spacer spacer--vertical spacer--lg"></div>
 									<div class="flex gap-sm justify-center align-center">
 										<button class="button button--gray" onclick=<%= `closeDeleteMessageModal(${message.id})`%>>Annnuler</button>
 										<form action="/messages/<%= message.id %>/delete" method="POST">
@@ -74,20 +74,19 @@
 				<% } %>
 
 				<div>
-					<div class="spacer vertical lg"></div>
+					<div class="spacer spacer--vertical spacer--lg"></div>
 					<% if (locals.user) { %>
 						<% if (isUnvalidated) { %>
 							<section class="card">
 								<h2 class="h3 text-center">Vous devez valider votre compte<br />avant de pouvoir envoyer un message</h2>
-								<div class="spacer vertical md"></div>
+								<div class="spacer spacer--vertical spacer--md"></div>
 								<div class="flex justify-center">
 									<a class="button" href="/my-account/validate">Valider mon compte</a>
 								</div>
 							</section>
 						<% } else { %>
-							<section>
+							<section class="flex flex--column justify-center align-center gap-md">
 								<h2 class="h2 text-center">Envoyer un nouveau message</h2>
-								<div class="spacer vertical md"></div>
 								<form class="form" action="/messages/add" method="POST">
 									<label class="form-field">
 										<span class="form-field__label">Message</span>
@@ -102,7 +101,7 @@
 					<% } else { %>
 						<section class="card">
 							<h2 class="h3 text-center">Vous devez être membre<br />pour pouvoir envoyer un message</h2>
-							<div class="spacer vertical md"></div>
+							<div class="spacer spacer--vertical spacer--md"></div>
 							<div class="flex justify-center">
 								<a class="button" href="/my-account/log-in">Connexion</a>
 								<a class="button" href="/my-account/sign-up">Inscription</a>
@@ -122,9 +121,9 @@
 			}
 			function closeDeleteMessageModal(id) {
 				const deleteMessageModal = document.querySelector(`#delete-message-modal-${id}`)
-				deleteMessageModal.classList.add("is-closing")
+				deleteMessageModal.classList.add("modal--is-closing")
 				setTimeout(() => {
-					deleteMessageModal.classList.remove("is-closing")
+					deleteMessageModal.classList.remove("modal--is-closing")
 					deleteMessageModal.close()
 				}, 500)
 			}

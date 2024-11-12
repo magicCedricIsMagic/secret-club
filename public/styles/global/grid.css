@@ -3,27 +3,25 @@
 	display: grid;
 	gap: var(--md);
 	grid-template-columns: repeat(auto-fill, minmax(var(--column-min-width), 1fr));	
-
-	&.xxs {
-		--column-min-width: var(--column-xxs);
-	}
-	&.sm {
-		--column-min-width: var(--column-sm);
-	}
-	&.xs {
-		--column-min-width: var(--column-xs);
-	}
-	&.lg {
-		--column-min-width: var(--column-lg);
-	}
-	&.xl {
-		--column-min-width: var(--column-xl);
-	}
-	&.xxl {
-		--column-min-width: var(--column-xxl);
-	}
-
 	@media (width < 600px) {
 		grid-template-columns: 1fr;
 	}
+}
+.grid--xxs {
+	--column-min-width: var(--column-xxs);
+}
+.grid--sm {
+	--column-min-width: var(--column-sm);
+}
+.grid--xs {
+	--column-min-width: var(--column-xs);
+}
+.grid--lg {
+	--column-min-width: var(--column-lg);
+}
+.grid--xl {
+	--column-min-width: var(--column-xl);
+}
+.grid--xxl {
+	--column-min-width: var(--column-xxl);
 }

@@ -36,19 +36,18 @@
 			backdrop-filter: blur(0);
 		}
 	}
+}
+.modal--is-closing {
+	translate: 0 calc(var(--md) * -1);
+	transition-duration: var(--transition);
 
-	&.is-closing {
-		translate: 0 calc(var(--md) * -1);
-		transition-duration: var(--transition);
+	&,
+	&::backdrop {
+		opacity: 0;
+		transition-timing-function: ease-in;
+	}
 
-		&,
-		&::backdrop {
-			opacity: 0;
-			transition-timing-function: ease-in;
-		}
-
-		&::backdrop {
-			backdrop-filter: blur(0);
-		}
+	&::backdrop {
+		backdrop-filter: blur(0);
 	}
 }

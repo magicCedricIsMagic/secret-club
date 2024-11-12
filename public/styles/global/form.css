@@ -60,7 +60,6 @@ textarea {
 		}
 	}
 }
-
 .form-field__input--switch {
 	cursor: pointer;
 	border: unset;
@@ -94,7 +93,6 @@ textarea {
 	translate: 0 0;
 	background-color: var(--col-gray);
 }
-
 .form-field__input--checkbox,
 .form-field__input--radio {
 	display: flex;
@@ -107,7 +105,6 @@ textarea {
 		}
 	}
 }
-
 .form-field__input--color {
 	cursor: pointer;
 	padding: var(--xxxs);
@@ -130,11 +127,10 @@ textarea {
 	gap: var(--xs) var(--md);
 	flex-direction: row;
 
-	&.vertical {
-		flex-direction: column;
-	}
-
 	.form-field__label {
 		padding: 0 var(--xs);
 	}
+}
+.form-field__fieldset--vertical {
+	flex-direction: column;
 }

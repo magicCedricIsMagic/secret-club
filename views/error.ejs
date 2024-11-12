@@ -8,12 +8,12 @@
 		<%- include("includes/header") %>
 		<main class="main">
 			<h1 class="h1"><%= title %></h1>
-			<div class="spacer vertical sm"></div>
+			<div class="spacer spacer--vertical spacer--sm"></div>
 			<h2 class="h2"><%= error.name %>&nbsp;</h2>
-			<div class="spacer vertical sm"></div>
+			<div class="spacer spacer--vertical spacer--sm"></div>
 			<p><%= error.message %></p>
-			<div class="spacer vertical lg"></div>
-			<div class="flex wrap gap-sm">
+			<div class="spacer spacer--vertical spacer--lg"></div>
+			<div class="flex flex--wrap gap-sm">
 				<% if (error.statusCode === 400) { %>
 					<button
 						onclick="history.back()"

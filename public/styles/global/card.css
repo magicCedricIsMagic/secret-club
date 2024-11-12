@@ -3,16 +3,7 @@
 	padding: var(--lg);
 	border-radius: var(--md);
 	
-	&.sm {
-		padding: var(--md);
-		border-radius: var(--sm);
-	}
-	&.xs {
-		padding: var(--sm);
-		border-radius: var(--xs);
-	}
-
-	&:is(a[href]) {
+	&[href] {
 		cursor: pointer;
 		transition: var(--transition);
 		outline: 4px solid transparent;
@@ -32,4 +23,12 @@
 	@media (width < 600px) {
 		padding-inline: var(--md);
 	}
+}
+.card--sm {
+	padding: var(--md);
+	border-radius: var(--sm);
+}
+.card--xs {
+	padding: var(--sm);
+	border-radius: var(--xs);
 }

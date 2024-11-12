@@ -36,8 +36,7 @@
 		padding-inline: var(--sm);
 	}
 }
-
- .button--danger {
+.button--danger {
 	--btn-col: var(--col-danger);
 }
 .button--success {
@@ -57,7 +56,6 @@
 	font-size: var(--text-lg);
 	padding: var(--sm) var(--lg);
 }
-
 .button--inline {
 	display: inline-flex;
 	padding: unset;
@@ -72,7 +70,6 @@
 		scale: unset;
 	}
 }
-
 .button--circle {
 	padding: unset;
 	width: var(--md);

@@ -7,10 +7,10 @@
 		<%- include("includes/header") %>
 		<main class="main">
 			<h1 class="h1"><%= title %></h1>
-			<div class="spacer vertical lg"></div>
+			<div class="spacer spacer--vertical spacer--lg"></div>
 			
 			<h1 class="h2">Modifier mon compte</h1>
-			<div class="spacer vertical"></div>
+			<div class="spacer spacer--vertical"></div>
 			<form class="form" action="/my-account/update" method="POST">
 
 				<label class="form-field">
@@ -55,16 +55,16 @@
 					<button class="button" type="submit">Envoyer</button>
 				</div>
 			</form>
-			<div class="spacer vertical lg"></div>
+			<div class="spacer spacer--vertical spacer--lg"></div>
 			<div class="flex justify-center">
 				<button class="button button--sm button--danger" onclick="openDeleteAccountModal()">Supprimer mon compte</button>
 			</div>
 
 			<dialog id="delete-account-modal" class="modal">
 				<h3 class="h3">Êtes-vous sûr de vouloir supprimer votre compte&nbsp;?</h3>
-				<div class="spacer vertical md"></div>
+				<div class="spacer spacer--vertical spacer--md"></div>
 				<p>La suppression sera définitive.</p>
-				<div class="spacer vertical lg"></div>
+				<div class="spacer spacer--vertical spacer--lg"></div>
 				<div class="flex gap-sm justify-center align-center">
 					<button class="button button--gray" onclick="closeDeleteAccountModal()">Annnuler</button>
 					<form action="/my-account/delete" method="POST">
@@ -82,9 +82,9 @@
 			}
 			function closeDeleteAccountModal() {
 				const deleteAccountModal = document.querySelector(`#delete-account-modal`)
-				deleteAccountModal.classList.add("is-closing")
+				deleteAccountModal.classList.add("modal--is-closing")
 				setTimeout(() => {
-					deleteAccountModal.classList.remove("is-closing")
+					deleteAccountModal.classList.remove("modal--is-closing")
 					deleteAccountModal.close()
 				}, 500)
 			}

@@ -55,7 +55,6 @@
 	height: 100%;
 	object-fit: cover;
 }
-
 .site-nav__picture--icon {
 	font-size: var(--text-xl);
 	color: var(--user-col-contrast);

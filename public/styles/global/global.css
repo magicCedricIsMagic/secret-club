@@ -174,16 +174,17 @@ a {
 .flex {
 	display: flex;
 	gap: var(--md);
-	&.wrap {
-		flex-wrap: wrap;
-	}
-	&.row {
-		flex-direction: row;
-	}
-	&.column {
-		flex-direction: column;
-	}
 }
+.flex--wrap {
+	flex-wrap: wrap;
+}
+.flex--row {
+	flex-direction: row;
+}
+.flex--column {
+	flex-direction: column;
+}
+
 
 .gap-0 {
 	gap: 0;
@@ -246,8 +247,8 @@ a {
 	display: flex;
 	flex-direction: column;
 	width: fit-content;
-	&.full {
-		width: 100%;
-		max-width: 120rem;
-	}
+}
+.main--full {
+	width: 100%;
+	max-width: 120rem;
 }

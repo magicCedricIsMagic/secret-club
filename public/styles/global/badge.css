@@ -11,17 +11,6 @@
 	border-radius: var(--xs);
 	font-weight: var(--text-medium);
 	
-	&.white {
-		--bg-col: var(--col-white);
-	}
-	&.gray {
-		--bg-col: color-mix(in srgb, var(--col-gray) 33%, transparent);
-	}
-	&.sm {
-		font-size: var(--text-sm);
-		font-weight: var(--text-normal);
-		padding-inline: var(--xs);
-	}
 	&[href] {
 		transition: var(--transition);
 		&:hover {
@@ -30,4 +19,15 @@
 			background-color: color-mix(in srgb, var(--col-interactive) 20%, var(--col-white));
 		}
 	}
+}
+.badge--white {
+	--bg-col: var(--col-white);
+}
+.badge--gray {
+	--bg-col: color-mix(in srgb, var(--col-gray) 33%, transparent);
+}
+.badge--sm {
+	font-size: var(--text-sm);
+	font-weight: var(--text-normal);
+	padding-inline: var(--xs);
 }

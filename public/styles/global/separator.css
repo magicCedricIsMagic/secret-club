@@ -1,28 +1,27 @@
 .separator {
 	border: solid 0px color-mix(in srgb, var(--col-text) 15%, transparent);
 	--space-size: 0;
-	&.xs {
-		--space-size: var(--xs);
-	}
-	&.sm {
-		--space-size: var(--sm);
-	}
-	&.md {
-		--space-size: var(--md);
-	}
-	&.lg {
-		--space-size: var(--lg);
-	}
-	&.xl {
-		--space-size: var(--xl);
-	}
-
-	&.horizontal {
-		border-bottom-width: 1px;
-		margin-block: var(--space-size);
-	}
-	&.vertical {
-		border-right-width: 1px;
-		margin-inline: var(--space-size);
-	}
+}
+.separator--xs {
+	--space-size: var(--xs);
+}
+.separator--sm {
+	--space-size: var(--sm);
+}
+.separator--md {
+	--space-size: var(--md);
+}
+.separator--lg {
+	--space-size: var(--lg);
+}
+.separator--xl {
+	--space-size: var(--xl);
+}
+.separator--horizontal {
+	border-bottom-width: 1px;
+	margin-block: var(--space-size);
+}
+.separator--vertical {
+	border-right-width: 1px;
+	margin-inline: var(--space-size);
 }

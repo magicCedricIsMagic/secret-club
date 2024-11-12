@@ -58,7 +58,6 @@
 	height: 100%;
 	object-fit: cover;
 }
-
 .message__picture--icon {
 	font-size: var(--text-xl);
 	color: color-mix(in srgb, var(--message-text-color) 67%, transparent);
@@ -70,8 +69,6 @@
 	color: var(--message-text-color);
 	font-weight: var(--text-bold);
 }
-
-
 
 .message__bubble {
 	flex: auto;
