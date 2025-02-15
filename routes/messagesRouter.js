@@ -18,7 +18,6 @@ messagesRouter.post("/:id/delete", (req, res, next) => {
 	const messageId = req.params?.id
 	if (res.locals.user?.membershipStatus.slug === "admin" && messageId) {
 		messagesController.deleteMessage(req, res, next, messageId)
-		res.redirect("/")	
 	}
 	else {
 		throw new CustomError(

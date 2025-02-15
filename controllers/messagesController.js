@@ -32,6 +32,7 @@ async function createMessage(req, res, next) {
 async function deleteMessage(req, res, next, messageId) {
 	try {
 		await dbMessages.deleteMessage(messageId)
+		res.redirect("/")
 	}
 	catch (err) {
 		return next(err)
