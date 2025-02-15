@@ -57,6 +57,7 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	overflow-clip-margin: unset;
 }
 .message__picture--icon {
 	font-size: var(--text-xl);
