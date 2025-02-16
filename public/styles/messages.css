@@ -42,8 +42,7 @@
 }
 
 .message__picture-container {
-	/* background-color: color-mix(in srgb, var(--message-text-color) 25%, transparent); */
-	background-color: color-mix(in srgb, var(--message-text-color) 12.5%, transparent);
+	background-color: color-mix(in srgb, var(--message-bubble-color) 62%, transparent);
 	border-radius: 999rem;
 	width: var(--xxl);
 	height: var(--xxl);
